@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "678149504790",
+    "project_id": "asilapp-casodistudio-sms",
+    "storage_bucket": "asilapp-casodistudio-sms.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678149504790:android:5b10f6b95c20ffc66d5a37",
+        "android_client_info": {
+          "package_name": "com.example.asilapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7l-J5WaDdTeH3M6-5w-eeu1dzrwUWA4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
