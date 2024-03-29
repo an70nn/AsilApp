@@ -10,6 +10,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.asilapp.HomePageActivity;
 import com.example.asilapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -56,7 +57,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "Autenticazione riuscita.", Toast.LENGTH_SHORT).show();
 
-                                    //Apertura Schermata Dashboard Utente
+                                    Intent homepage = new Intent(getApplicationContext(), HomePageActivity.class);
+                                    startActivity(homepage);
 
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Autenticazione fallita.", Toast.LENGTH_SHORT).show();
