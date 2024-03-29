@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
+    private static int counter = 0;
+
     private int id;
     private String name;
     private String surname;
@@ -16,8 +18,9 @@ public class User implements Serializable {
     private String phone;
     private String gender;
 
-    public User(int id, String name, String surname, String placeBirth, String birthDate, String country, String email, String pw, int center_id, String phone, String gender) {
-        this.id = id;
+    public User(String name, String surname, String placeBirth, String birthDate, String country, String email, String pw, int center_id, String phone, String gender) {
+
+        this.id = counter;
         this.name = name;
         this.surname = surname;
         this.placeBirth = placeBirth;
@@ -28,6 +31,8 @@ public class User implements Serializable {
         this.center_id = center_id;
         this.phone = phone;
         this.gender = gender;
+
+        counter++;
     }
 
 
