@@ -1,8 +1,9 @@
 package com.example.asilapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Measurement {
+public class Measurement implements Serializable {
 
     private String tool;
     private float value;
