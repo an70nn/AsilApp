@@ -9,25 +9,25 @@ public class User implements Serializable {
     private int id;
     private String name;
     private String surname;
-    private String placeBirth;
+    private String gender;
+    private String birthPlace;
     private String birthDate;
     private String country;
-    private String email;
-    private String pw;
-    private int center_id;
     private String phone;
-    private String gender;
+    private String center_id;
+    private String email;
+    private String password;
 
-    public User(String name, String surname, String placeBirth, String birthDate, String country, String email, String pw, int center_id, String phone, String gender) {
+    public User(String name, String surname, String birthPlace, String birthDate, String country, String email, String password, String center_id, String phone, String gender) {
 
         this.id = counter;
         this.name = name;
         this.surname = surname;
-        this.placeBirth = placeBirth;
+        this.birthPlace = birthPlace;
         this.birthDate = birthDate;
         this.country = country;
         this.email = email;
-        this.pw = pw;
+        this.password = password;
         this.center_id = center_id;
         this.phone = phone;
         this.gender = gender;
@@ -40,12 +40,12 @@ public class User implements Serializable {
         this.id = 0;
         this.name = "name";
         this.surname = "surname";
-        this.placeBirth = "placeBirth";
+        this.birthPlace = "birthPlace";
         this.birthDate = "birthDate";
         this.country = "country";
         this.email = "email";
-        this.pw = "pw";
-        this.center_id = 0;
+        this.password = "password";
+        this.center_id = "0";
         this.phone = "phone";
         this.gender = "gender";
     }
@@ -72,10 +72,10 @@ public class User implements Serializable {
     }
 
     public String getPlaceBirth() {
-        return placeBirth;
+        return birthPlace;
     }
     public void setPlaceBirth(String placeBirth) {
-        this.placeBirth = placeBirth;
+        this.birthPlace = placeBirth;
     }
 
     public String getBirthDate() {
@@ -99,17 +99,10 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getPw() {
-        return pw;
-    }
-    public void setPw(String pw) {
-        this.pw = pw;
-    }
-
-    public int getCenter_id() {
+    public String getCenter_id() {
         return center_id;
     }
-    public void setCenter_id(int center_id) {
+    public void setCenter_id(String center_id) {
         this.center_id = center_id;
     }
 
@@ -127,6 +120,22 @@ public class User implements Serializable {
         this.gender = gender;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public String getBirthPlace() {
+        return birthPlace;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -137,7 +146,7 @@ public class User implements Serializable {
                 ", birthDate='" + birthDate + '\'' +
                 ", country='" + country + '\'' +
                 ", email='" + email + '\'' +
-                ", pw='" + pw + '\'' +
+                ", password='" + password + '\'' +
                 ", center_id=" + center_id +
                 '}';
     }
