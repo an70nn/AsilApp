@@ -20,5 +20,6 @@
     <string name="immagine_benvenuto_nell_app">immagine benvenuto nell\'app</string>
     <string name="login_prompt">Altrimenti accedi…</string>
     <string name="signup_prompt">Altrimenti registrati…</string>
+    <string name="userimage">userImage</string>
 
 </resources>
