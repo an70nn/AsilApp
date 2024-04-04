@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">AsilApp</string>
+    <string name="immagine_aggiungi_credenziali">Immagine aggiungi credenziali</string>
+    <string name="inserisci_le_credenziali">Inserisci le credenziali</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="maschio">Maschio</string>
+    <string name="femmina">Femmina</string>
+    <string name="luogo_di_nascita">Luogo di nascita</string>
+    <string name="data_di_nascita">Data di nascita</string>
+    <string name="nazionalit">Nazionalità</string>
+    <string name="phone">Phone</string>
+    <string name="center_id">Center ID</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="registrati">Registrati</string>
+    <string name="ben_tornato">Ben tornato</string>
+    <string name="login">Login</string>
+    <string name="accedi">Accedi</string>
+    <string name="immagine_benvenuto_nell_app">immagine benvenuto nell\'app</string>
+    <string name="login_prompt">Altrimenti accedi…</string>
+    <string name="signup_prompt">Altrimenti registrati…</string>
+
 </resources>

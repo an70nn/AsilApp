@@ -41,8 +41,12 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+    //Dipendenze per l'accesso al Database Firebase
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-database")
+
+    //Dipendenze per la gestione dei Fragment
+    implementation("androidx.fragment:fragment:1.6.2")
 }

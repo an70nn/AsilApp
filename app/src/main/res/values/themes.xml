@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.AsilApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -15,4 +15,11 @@
     </style>
 
     <style name="Theme.AsilApp" parent="Base.Theme.AsilApp" />
+
+
+
+    <style name="CustomRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlNormal">#444</item>
+        <item name="colorControlActivated">#108E3D</item>
+    </style>
 </resources>
