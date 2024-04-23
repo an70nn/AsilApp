@@ -37,6 +37,7 @@ public class User implements Serializable {
 
 
     public User() {
+
         this.id = 0;
         this.name = "name";
         this.surname = "surname";

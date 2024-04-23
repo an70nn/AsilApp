@@ -10,11 +10,11 @@ public class Measurement implements Serializable {
     private String user;
     private Date date;
 
-    public Measurement(String tool, float value, String user, Date date) {
+    public Measurement(String tool, float value, String user) {
         this.tool = tool;
         this.value = value;
         this.user = user;
-        this.date = date;
+        this.date = new Date();
     }
     public static Date setDateToday(){
         return new Date();

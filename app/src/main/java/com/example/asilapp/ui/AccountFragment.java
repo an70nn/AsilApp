@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.asilapp.R;
 import com.example.asilapp.model.User;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.*;
 
 public class AccountFragment extends Fragment {
 
