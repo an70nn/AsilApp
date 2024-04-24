@@ -44,6 +44,7 @@ public class AccountFragment extends Fragment {
         final TextView recapitoTelefonicoTextView = view.findViewById(R.id.recapitoTelefonicoTextView);
         final TextView colonna2_7 = view.findViewById(R.id.recapitoTelefonicoUtente);
         // Imposta l'immagine dell'utente nell'ImageView
+        userImageView = view.findViewById(R.id.userImageView);
         userImageView.setImageResource(R.drawable.ic_account_circle_black_24dp);
 
         // Imposta i dati nei TextView
