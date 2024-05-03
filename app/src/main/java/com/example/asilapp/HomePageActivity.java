@@ -23,7 +23,7 @@ public class HomePageActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.navigation_health) {
                 selectedFragment = new HealthFragment();
             } else if (item.getItemId() == R.id.navigation_account) {
-                selectedFragment = new AccountFragment();
+                selectedFragment = new ProfileFragment();
             } else if (item.getItemId() == R.id.navigation_payments) {
                 selectedFragment = new PaymentsFragment();
             }
