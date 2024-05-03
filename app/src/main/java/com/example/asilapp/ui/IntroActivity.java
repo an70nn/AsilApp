@@ -63,18 +63,6 @@ public class IntroActivity extends AppCompatActivity {
             params.width = ConstraintLayout.LayoutParams.MATCH_PARENT;
             bttnToLoginFragment.setLayoutParams(params);
         });
-
-        // Imposta un callback per gestire il ritorno indietro
-        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                //Se premo il bottone "Back" di Android per tornare indietro
-                //Mi riporta alla schermata iniziale (activity_intro.xml)
-                Intent intent = new Intent(IntroActivity.this, IntroActivity.class);
-                startActivity(intent);
-            }
-        };
-        getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     /**
