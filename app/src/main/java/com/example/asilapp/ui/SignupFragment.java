@@ -10,11 +10,13 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.example.asilapp.R;
-import com.example.asilapp.model.User;
-import com.example.asilapp.persistence.DatabaseManager;
+import com.example.asilapp.model.Paziente;
+import com.example.asilapp.persistence.DatabasePazienti;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
@@ -23,31 +25,29 @@ public class SignupFragment extends Fragment {
     private Spinner signupCountry;
     private RadioButton signupButtonMale, signupButtonFemale;
     private Button bttnSignup;
-    private DatabaseManager databaseManager;
+    private DatabasePazienti databasePazienti;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_signup, null);
+        return inflater.inflate(R.layout.fragment_signup, container, false);
+    }
 
-        //Inizializza i componenti UI
-        signupName = view.findViewById(R.id.TextInputEditText_Signup_Name);
-        signupSurname = view.findViewById(R.id.TextInputEditText_Signup_Surname);
-        signupButtonMale = view.findViewById(R.id.radiobutton_signup_button_male);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        signupName         = view.findViewById(R.id.TextInputEditText_Signup_Name);
+        signupSurname      = view.findViewById(R.id.TextInputEditText_Signup_Surname);
+        signupButtonMale   = view.findViewById(R.id.radiobutton_signup_button_male);
         signupButtonFemale = view.findViewById(R.id.radiobutton_signup_button_female);
-        signupBirthplace = view.findViewById(R.id.TextInputEditText_Signup_Birthplace);
-        signupBirthday = view.findViewById(R.id.TextInputEditText_Signup_Birthday);
-        signupCountry = view.findViewById(R.id.Spinner_Signup_Country);
-        signupPhone = view.findViewById(R.id.TextInputEditText_Signup_Phone);
-        signupCenterID = view.findViewById(R.id.TextInputEditText_Signup_CenterID);
-        signupEmail = view.findViewById(R.id.TextInputEditText_Signup_Email);
-        signupPassword = view.findViewById(R.id.TextInputEditText_Signup_Password);
-        bttnSignup = view.findViewById(R.id.button_signup);
+        signupBirthplace   = view.findViewById(R.id.TextInputEditText_Signup_Birthplace);
+        signupBirthday     = view.findViewById(R.id.TextInputEditText_Signup_Birthday);
+        signupCountry      = view.findViewById(R.id.Spinner_Signup_Country);
+        signupPhone        = view.findViewById(R.id.TextInputEditText_Signup_Phone);
+        signupCenterID     = view.findViewById(R.id.TextInputEditText_Signup_CenterID);
+        signupEmail        = view.findViewById(R.id.TextInputEditText_Signup_Email);
+        signupPassword     = view.findViewById(R.id.TextInputEditText_Signup_Password);
+        bttnSignup         = view.findViewById(R.id.button_signup);
 
-        //Inizializza l'istanza per la gestione del database
-        databaseManager = new DatabaseManager(requireContext());
-
-        return view;
+        databasePazienti = new DatabasePazienti(requireContext());
     }
 
     @Override
@@ -84,11 +84,11 @@ public class SignupFragment extends Fragment {
             validateField(PASSWORD_RECORD,      signupName,         "Inserire una password valida");
 
             //Crea un nuovo oggetto User con i dati forniti dai campi di input
-            User utente = new User(NAME_RECORD, SURNAME_RECORD, BIRTHPLACE_RECORD, BIRTHDAY_RECORD, COUNTRY_RECORD,
+            Paziente paziente = new Paziente(NAME_RECORD, SURNAME_RECORD, BIRTHPLACE_RECORD, BIRTHDAY_RECORD, COUNTRY_RECORD,
                                  EMAIL_RECORD, PASSWORD_RECORD, CENTREID_RECORD, PHONE_RECORD, GENDER_RECORD);
 
             //Esegue la registrazione dell'utente utilzzando tali dati
-            databaseManager.signup(utente);
+            databasePazienti.signup(paziente);
 
         });
     }

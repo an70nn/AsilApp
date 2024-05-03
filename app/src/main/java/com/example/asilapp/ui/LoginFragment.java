@@ -10,26 +10,23 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.asilapp.R;
-import com.example.asilapp.persistence.DatabaseManager;
+import com.example.asilapp.persistence.DatabasePazienti;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginFragment extends Fragment {
     private TextInputEditText loginEmail, loginPassword;
     private Button bttnLogin;
-    private DatabaseManager databaseManager;
+    private DatabasePazienti databasePazienti;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, null);
-
         //Inizializza i componeneti UI
         loginEmail      = view.findViewById(R.id.TextInputEditText_Login_Email);
         loginPassword   = view.findViewById(R.id.TextInputEditText_Login_Password);
         bttnLogin       = view.findViewById(R.id.button_login);
-
         //Inizializza l'istanza per la gestione del database
-        databaseManager = new DatabaseManager(requireContext());
-
+        databasePazienti = new DatabasePazienti(requireContext());
         return view;
     }
 
@@ -51,7 +48,7 @@ public class LoginFragment extends Fragment {
                 Toast.makeText(getActivity(), "ACCESSO FALLITO: Campi vuoti", Toast.LENGTH_SHORT).show();
             }else{
                 //Chiama il metodo login in DatabaseManager se sia email che password sono forniti.
-                databaseManager.login(EMAIL_RECORD, PASSWORD_RECORD);
+                databasePazienti.login(EMAIL_RECORD, PASSWORD_RECORD);
             }
         });
     }

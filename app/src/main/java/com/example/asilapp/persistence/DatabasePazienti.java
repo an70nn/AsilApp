@@ -9,31 +9,31 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.asilapp.HomePageActivity;
-import com.example.asilapp.model.User;
+import com.example.asilapp.model.Paziente;
+import com.example.asilapp.ui.IntroActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-public class DatabaseManager {
-    private static final String TAG = "FirebaseManager";
-
-    //Contesto della schermata in utilizzo
+public class DatabasePazienti {
+    private static final String TAG = "DatabaseManager";
     private final Context context;
     private final FirebaseAuth firebaseAuth;
-    private final FirebaseFirestore dataFirebase;
+    private final FirebaseFirestore firestoreDatabase;
 
-    public DatabaseManager(Context context){
-        this.context = context;
-        firebaseAuth = FirebaseAuth.getInstance();      // Ottiene un'istanza di FirebaseAuth
-        dataFirebase = FirebaseFirestore.getInstance(); // Ottiene un'istanza di FirebaseFirestore
+    public DatabasePazienti(Context context){
+        this.context      = context;                          //Ottiene il contesto della schermata in utilizzo
+        firebaseAuth      = FirebaseAuth.getInstance();       //Ottiene un'istanza di FirebaseAuth
+        firestoreDatabase = FirebaseFirestore.getInstance();  //Ottiene un'istanza di FirebaseFirestore
     }
 
     /**
@@ -44,7 +44,6 @@ public class DatabaseManager {
     public void login(final String EMAIL, final String PASSWORD){
             firebaseAuth.signInWithEmailAndPassword(EMAIL, PASSWORD)
                 .addOnCompleteListener(task -> {
-                    //Verifica se l'operazione di accesso sia avvenuta
                     if (task.isSuccessful()) {
                         Toast.makeText(context, "Autenticazione riuscita.", Toast.LENGTH_SHORT).show();
                         Log.i(TAG, "Accesso compiuto");
@@ -52,32 +51,39 @@ public class DatabaseManager {
                         //Se l'autenticazione è riuscita avvia la schermata homepage
                         context.startActivity(new Intent(context, HomePageActivity.class));
                     } else {
-                        //Se l'operazione fallisce mostra un messaggio di autentificazione fallita
                         String errorMessage = "Autentificazione fallita: ";
                         if(task.getException() != null){
-                            //E mostra anche un feedback specifico sull'errore
+                            //Mostra un feedback specifico sull'errore
                             errorMessage += task.getException().getMessage();
-                            Log.e(TAG, "Messaggio d'Errore: "+task.getException().getMessage());
+                            Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, errorMessage);
                         }
-                        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     /**
      * Registra un nuovo utente
-     * @param user Oggetto User contenente tutte le informazioni dell'utente da registrare
+     * @param paziente Oggetto User contenente tutte le informazioni dell'utente da registrare
      */
-    public void signup(final User user) {
-        firebaseAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword()).addOnCompleteListener(task -> {
-            //Verifica se l'operazione di registazione sia avvenuta
+    public void signup(final Paziente paziente) {
+        firebaseAuth.createUserWithEmailAndPassword(paziente.getEmail(), paziente.getPassword()).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                //Crea un oggetto contenente le informazioni dell'utente da memorizzare poi nel database Firestore
+                Map<String, Object> userData = new HashMap<>();
+                userData.put("id", getCurrentUserId());
+                userData.put("name",       paziente.getName());
+                userData.put("surname",    paziente.getSurname());
+                userData.put("gender",     paziente.getGender());
+                userData.put("birthPlace", paziente.getBirthPlace());
+                userData.put("birthDate",  paziente.getBirthDate());
+                userData.put("country",    paziente.getCountry());
+                userData.put("phone",      paziente.getPhone());
+                userData.put("centerID",   paziente.getCenterID());
+                userData.put("email",      paziente.getEmail());
+                userData.put("password",   paziente.getPassword());
 
-                //Se la registrazione ha successo crea un documento utente nel database Firestore
-                Map<String, Object> userData = createUserData(user);
-
-                //Aggiunge i dati dell'utente al nodo "utenti" utilizzando l'ID dell'utente come chiave
-                dataFirebase.collection("utenti").document(firebaseAuth.getCurrentUser().getUid()).set(userData)
+                firestoreDatabase.collection("utenti").document(Objects.requireNonNull(getCurrentUserId())).set(userData)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -110,26 +116,32 @@ public class DatabaseManager {
     }
 
     /**
-     * Crea un oggetto conntenente i dati dell'utente per essere memorizzato nel database Firestore
-     * @param user Oggetto contenente le informazioni dell'utente
-     * @return Mappa di dati contenente le informazioni dell'Utente
+     * Legge i dati del paziente dal database Firestore e notifica il risultato tramite un listener.
+     * @param listener Il listener per gestire l'evento di lettura dei dati del paziente.
      */
-    @NonNull
-    private Map<String, Object> createUserData(User user) {
-        Map<String, Object> userData = new HashMap<>();
-
-        userData.put("id", firebaseAuth.getCurrentUser().getUid());
-        userData.put("name", user.getName());
-        userData.put("surname", user.getSurname());
-        userData.put("gender", user.getGender());
-        userData.put("birthplace", user.getBirthPlace());
-        userData.put("birthday", user.getBirthDate());
-        userData.put("country", user.getCountry());
-        userData.put("phone", user.getPhone());
-        userData.put("centreID", user.getCenter_id());
-        userData.put("email", user.getEmail());
-        userData.put("password", user.getPassword());
-        return userData;
+    public void read(final OnPazienteDataReadListener listener){
+        //Ottiene il riferimento al singolo documento (cioè al singolo utente) della collezione "utenti"
+        //Che viene identificato tramite una stringa non nulla dell'ID dell'utente
+        DocumentReference documentReference = firestoreDatabase.collection("utenti").document(getCurrentUserId());
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists()) {
+                        Paziente paziente = documentSnapshot.toObject(Paziente.class);
+                        listener.onPazienteDataRead(paziente);
+                    } else {
+                        listener.onPazienteDataRead(null);
+                        Log.d(TAG, "Documento non esistente");
+                    }
+                } else {
+                    Toast.makeText(context, "Lettura non avvenuta", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "get failed with ", task.getException());
+                    listener.onPazienteDataRead(null);
+                }
+            }
+        });
     }
 
     /**
@@ -149,11 +161,12 @@ public class DatabaseManager {
         }
     }
 
-    /*
-    Esegue il logout dell'utente
 
-    public void logout(){
+    /**
+     * Esegue il logout dell'utente
+     */
+     public void logout(){
         firebaseAuth.signOut();
+        context.startActivity(new Intent(context, IntroActivity.class));
     }
-    */
 }
