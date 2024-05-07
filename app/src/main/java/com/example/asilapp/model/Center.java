@@ -6,18 +6,20 @@ public class Center implements Serializable {
 
     private String citta;
     private String nome;
-    private String locazione;
+    private String indirizzo;
     private int id;
     private String norma;
     private String regolamento;
+    private String immagine;
 
-    public Center(String citta, String nome, String locazione, int id, String norma, String regolamento) {
+    public Center(String citta, String nome, String indirizzo, int id, String norma, String regolamento, String immagine) {
         this.citta = citta;
         this.nome = nome;
-        this.locazione = locazione;
+        this.indirizzo = indirizzo;
         this.id = id;
         this.norma = norma;
         this.regolamento = regolamento;
+        this.immagine = immagine;
     }
 
     public String getCitta() {
@@ -34,11 +36,11 @@ public class Center implements Serializable {
         this.nome = nome;
     }
 
-    public String getLocazione() {
-        return locazione;
+    public String getIndirizzo() {
+        return indirizzo;
     }
-    public void setLocazione(String locazione) {
-        this.locazione = locazione;
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
     }
 
     public int getId() {
@@ -62,12 +64,15 @@ public class Center implements Serializable {
         this.regolamento = regolamento;
     }
 
+    public String getImmagine() { return immagine; }
+    public void setImmagine(String immagine) { this.immagine = immagine; }
+
     @Override
     public String toString() {
         return "Center{" +
                 "citta='" + citta + '\'' +
                 ", nome='" + nome + '\'' +
-                ", locazione='" + locazione + '\'' +
+                ", locazione='" + indirizzo + '\'' +
                 ", id=" + id +
                 ", norma='" + norma + '\'' +
                 ", regolamento='" + regolamento + '\'' +
