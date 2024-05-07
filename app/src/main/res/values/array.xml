@@ -5,4 +5,11 @@
         <item>Italia</item>
         <item>Ucraina</item>
     </string-array>
+
+    <string-array name="categorie_array">
+        <item>Categoria 1</item>
+        <item>Categoria 2</item>
+        <item>Categoria 3</item>
+        <!-- Aggiungi altre categorie qui -->
+    </string-array>
 </resources>

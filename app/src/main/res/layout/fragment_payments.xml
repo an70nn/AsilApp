@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.PaymentsFragment">
+
+    <TextView
+        android:id="@+id/tv_spese"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SPESE"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:background="@color/button"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_categorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:prompt="@string/categorie"
+        android:entries="@array/categorie_array"
+        android:layout_marginTop="16dp"
+        android:dropDownSelector="@drawable/spinner_item_selector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_spese" />
+
+    <Button
+        android:id="@+id/btn_aggiungi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aggiungi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_spese" />
+
+    <TextView
+        android:id="@+id/tv_totale_speso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Totale speso: 0€"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/spinner_categorie" />
+
+    <EditText
+        android:id="@+id/et_da_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="da data"
+        android:focusable="false"
+        android:onClick="showDatePickerDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/et_a_data"
+        app:layout_constraintTop_toBottomOf="@id/tv_totale_speso" />
+
+    <EditText
+        android:id="@+id/et_a_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="a data"
+        android:focusable="false"
+        android:onClick="showDatePickerDialog"
+        app:layout_constraintStart_toEndOf="@id/et_da_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_totale_speso" />
+
+    <ListView
+        android:id="@+id/lv_lista_spese"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
+        app:layout_constraintTop_toBottomOf="@id/et_a_data" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
