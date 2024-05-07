@@ -49,4 +49,6 @@ dependencies {
 
     //Dipendenze per la gestione dei Fragment
     implementation("androidx.fragment:fragment:1.6.2")
+
+    implementation ("com.google.android.gms:play-services-location:18.0.0")
 }
