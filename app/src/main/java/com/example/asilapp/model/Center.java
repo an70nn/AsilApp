@@ -10,15 +10,20 @@ public class Center implements Serializable {
     private int id;
     private String norma;
     private String regolamento;
+    private String descrizione;
+    private String telefono;
     private String immagine;
 
-    public Center(String citta, String nome, String indirizzo, int id, String norma, String regolamento, String immagine) {
+    public Center(String citta, String nome, String indirizzo, int id, String norma,
+                  String regolamento, String descrizione, String telefono, String immagine) {
         this.citta = citta;
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.id = id;
         this.norma = norma;
         this.regolamento = regolamento;
+        this.descrizione = descrizione;
+        this.telefono = telefono;
         this.immagine = immagine;
     }
 
@@ -63,6 +68,12 @@ public class Center implements Serializable {
     public void setRegolamento(String regolamento) {
         this.regolamento = regolamento;
     }
+
+    public String getDescrizione() { return descrizione; }
+    public void setDescrizione(String descrizione) { this.descrizione = descrizione; }
+
+    public String getTelefono() { return telefono; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
 
     public String getImmagine() { return immagine; }
     public void setImmagine(String immagine) { this.immagine = immagine; }
