@@ -1,4 +1,4 @@
-package com.example.asilapp.ui;
+package com.example.asilapp.Views.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

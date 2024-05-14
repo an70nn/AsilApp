@@ -1,4 +1,4 @@
-package com.example.asilapp.ui;
+package com.example.asilapp.Views.Fragments;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,8 +10,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 
 import com.example.asilapp.R;
-import com.example.asilapp.model.Paziente;
-import com.example.asilapp.persistence.DatabasePazienti;
+import com.example.asilapp.Models.Paziente;
+import com.example.asilapp.Database.DatabasePazienti;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 

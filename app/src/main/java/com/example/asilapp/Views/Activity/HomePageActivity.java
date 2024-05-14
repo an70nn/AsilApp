@@ -1,6 +1,10 @@
-package com.example.asilapp;
+package com.example.asilapp.Views.Activity;
 
-import com.example.asilapp.ui.*;
+import com.example.asilapp.R;
+import com.example.asilapp.Views.Fragments.HealthFragment;
+import com.example.asilapp.Views.Fragments.HomeFragment;
+import com.example.asilapp.Views.Fragments.PaymentsFragment;
+import com.example.asilapp.Views.Fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.os.Bundle;

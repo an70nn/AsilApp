@@ -1,4 +1,4 @@
-package com.example.asilapp.persistence;
+package com.example.asilapp.Database;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,9 +8,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.asilapp.HomePageActivity;
-import com.example.asilapp.model.Paziente;
-import com.example.asilapp.ui.IntroActivity;
+import com.example.asilapp.Database.Listeners.OnPazienteDataReadListener;
+import com.example.asilapp.Views.Activity.HomePageActivity;
+import com.example.asilapp.Models.Paziente;
+import com.example.asilapp.Views.Fragments.IntroActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;

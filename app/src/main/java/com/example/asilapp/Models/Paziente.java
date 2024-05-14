@@ -1,4 +1,4 @@
-package com.example.asilapp.model;
+package com.example.asilapp.Models;
 
 public class Paziente {
     private String name;

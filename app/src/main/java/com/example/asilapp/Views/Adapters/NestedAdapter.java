@@ -1,4 +1,4 @@
-package com.example.asilapp.ui.Adapters;
+package com.example.asilapp.Views.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;

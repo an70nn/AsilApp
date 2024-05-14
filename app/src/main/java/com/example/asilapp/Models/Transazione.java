@@ -1,4 +1,4 @@
-package com.example.asilapp.model;
+package com.example.asilapp.Models;
 
 import java.io.Serializable;
 import java.util.Date;

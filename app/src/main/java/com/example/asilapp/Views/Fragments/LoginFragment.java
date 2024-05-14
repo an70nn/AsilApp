@@ -1,4 +1,4 @@
-package com.example.asilapp.ui;
+package com.example.asilapp.Views.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.asilapp.R;
-import com.example.asilapp.persistence.DatabasePazienti;
+import com.example.asilapp.Database.DatabasePazienti;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginFragment extends Fragment {

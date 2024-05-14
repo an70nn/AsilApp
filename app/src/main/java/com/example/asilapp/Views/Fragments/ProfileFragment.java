@@ -1,4 +1,4 @@
-package com.example.asilapp.ui;
+package com.example.asilapp.Views.Fragments;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.asilapp.R;
-import com.example.asilapp.model.Paziente;
-import com.example.asilapp.persistence.DatabasePazienti;
-import com.example.asilapp.persistence.OnPazienteDataReadListener;
+import com.example.asilapp.Models.Paziente;
+import com.example.asilapp.Database.DatabasePazienti;
+import com.example.asilapp.Database.Listeners.OnPazienteDataReadListener;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 

@@ -1,9 +1,7 @@
-package com.example.asilapp.ui;
+package com.example.asilapp.Views.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.*;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;

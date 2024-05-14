@@ -1,4 +1,4 @@
-package com.example.asilapp.ui;
+package com.example.asilapp.Views.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.asilapp.R;
-import com.example.asilapp.ui.Adapters.DataModel;
-import com.example.asilapp.ui.Adapters.ItemAdapter;
+import com.example.asilapp.Views.Adapters.DataModel;
+import com.example.asilapp.Views.Adapters.ItemAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
