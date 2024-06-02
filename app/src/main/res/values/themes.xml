@@ -1,28 +1,91 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.AsilApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">#2640CF</item>
-        <item name="colorPrimaryVariant">#3F51B5</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/black</item>
         <!-- Customize your light theme here. -->
+
     </style>
 
     <style name="Theme.AsilApp" parent="Base.Theme.AsilApp" />
+
+    <style name="TitleTextView">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/root</item>
+    </style>
+
+    <style name="SubtitleText">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="SubSubtitleText">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CustomRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/root</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/radiobutton_selector</item>
+        <item name="android:button">@null</item>
+    </style>
+    
+    <style name="CustomButton" parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:background">@color/primary</item>
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomMaterialButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="CustomAutoCompleteTextViewStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:background">@drawable/autocomplete_background</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CustomSpinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/spinner_outline</item>
+    </style>
+
+    <style name="CustomMaterialDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="fontFamily">sans-serif</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorSurface">@color/background</item>
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <style name="CustomTextInputEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="fontFamily">sans-serif</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="background">@color/background</item>
+    </style>
 
     <style name="CustomRatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="colorControlNormal">#444</item>
         <item name="colorControlActivated">#108E3D</item>
     </style>
-    
-    <style name="ImageStyle_Circle">
-        <item name="cornerSize">50%</item>
-        <item name="cornerFamily">rounded</item>
-    </style>
+
 </resources>
