@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/Fragment_Cointaner_Home_Doctor"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/ImageButton_Home_Doctor_Language"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/cambia_lingua"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_language_32"/>
+
+    <TextView
+        android:id="@+id/TextView_Home_Doctor_Services"
+        style="@style/SubtitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/i_nostri_servizi"
+        android:layout_marginStart="10dp"/>
+
+    <GridLayout
+        android:id="@+id/GridLayout_Home_Doctor_Services"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/TextView_Home_Doctor_Services"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:columnCount="2"
+        android:rowCount="1">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/MaterialCardView_Home_Doctor_AddMeasurement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp"
+            android:layout_column="0"
+            android:layout_row="0">
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:background="@color/secondary">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_account"
+                    android:contentDescription="@string/todo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/aggiungi_misurazione"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/onSecondary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/MaterialCardView_Home_Doctor_ListPatients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="8dp"
+            android:layout_column="1"
+            android:layout_row="0">
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:padding="15dp"
+                android:background="@color/secondary">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_account"
+                    android:contentDescription="@string/todo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/lista_pazienti"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="@color/onSecondary"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </GridLayout>
+
+
+</RelativeLayout>

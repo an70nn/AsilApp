@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    android:layout_margin="30dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/nome"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/cognome"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:drawablePadding="8dp"
+                android:hint="@string/genere"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Birthplace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/luogo_di_nascita"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/data_di_nascita"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/paese"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account" />
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/cellulare"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account"/>
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_CenterID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/centerid"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account"/>
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/email"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account"/>
+
+            <TextView
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Anagrafic_Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/color_root_border"
+                android:hint="@string/password"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/root"
+                android:textSize="20sp"
+                android:drawablePadding="8dp"
+                app:drawableLeftCompat="@drawable/ic_account"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
