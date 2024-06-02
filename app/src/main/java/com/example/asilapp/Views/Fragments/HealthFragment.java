@@ -8,48 +8,63 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.asilapp.Controllers.HealthRecords;
+import com.example.asilapp.Controllers.HealthReports;
 import com.example.asilapp.R;
-import com.example.asilapp.Views.Adapters.DataModel;
-import com.example.asilapp.Views.Adapters.ItemAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class HealthFragment extends Fragment {
-    private RecyclerView recyclerView;
-    private ItemAdapter adapter;
-    private List<DataModel> medicalParametersList;
+    private TabLayout healthTabLayout;
+    private TabItem healthParameters, healthReports;
+    private ViewPager2 healthViewPager;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_health_medical_parameters, container, false);
+        return inflater.inflate(R.layout.fragment_health, container, false);
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerView = view.findViewById(R.id.RecyclerView_Health_Root_MedicalParameters);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        healthTabLayout  = view.findViewById(R.id.TabLayout_Health);
+        healthParameters = view.findViewById(R.id.TabItem_Health_Medical_Parameters);
+        healthReports    = view.findViewById(R.id.TabItem_Health_Medical_Reports);
+        healthViewPager  = view.findViewById(R.id.ViewPager_Health_Fragments);
 
-        //Valori di test
-        medicalParametersList = new ArrayList<>();
-        List<String> nestedList1 = new ArrayList<>();
-        nestedList1.add("Jams and Honey");
-        nestedList1.add("Pickles and Chutneys");
-
-        List<String> nestedList2 = new ArrayList<>();
-        nestedList2.add("Book");
-        nestedList2.add("Office Chair");
-
-        List<String> nestedList3 = new ArrayList<>();
-        nestedList3.add("Decorates");
-        nestedList3.add("Tea Table");
-
-        medicalParametersList.add(new DataModel(nestedList1,"Pressione"));
-        medicalParametersList.add(new DataModel(nestedList2,"Temperatura corporea"));
-        medicalParametersList.add(new DataModel(nestedList3,"Frequenza cardiaca"));
-
-        adapter = new ItemAdapter(medicalParametersList);
-        recyclerView.setAdapter(adapter);
+        // Configura l'adattatore per il ViewPager2
+        healthViewPager.setAdapter(new HealthFragment.HealthPagerAdapter(this));
+        // Imposta i titoli delle schede per i fragment
+        new TabLayoutMediator(healthTabLayout, healthViewPager,
+                (tab, position) -> tab.setText(position == 0 ? "Medical records" : "Medical reports")
+        ).attach();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    private static class HealthPagerAdapter extends FragmentStateAdapter {
+        public HealthPagerAdapter(Fragment fragment) {
+            super(fragment);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            if (position == 0) {
+                return new HealthRecords();
+            } else {
+                return new HealthReports();
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return 2;
+        }
+    }
+
 }

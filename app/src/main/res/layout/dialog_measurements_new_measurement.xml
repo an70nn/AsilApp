@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <GridLayout
+        android:id="@+id/Gridlayout_Doctor_Dialog_AddMeasurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:columnCount="2"
+        android:rowCount="4">
+
+        <!--Riga 2 Categoria -->
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/categoria"
+            style="@style/SubtitleText"
+            android:layout_column="0"
+            android:layout_row="0"/>
+
+        <Spinner
+            android:id="@+id/Spinner_Doctor_Dialog_AddMeasurement_Category"
+            style="@style/CustomSpinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/category"/>
+
+        <!--Riga 1 Titolo -->
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/data"
+            style="@style/SubtitleText"
+            android:layout_column="0"
+            android:layout_row="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/MaterialButton_Doctor_Dialog_AddMeasurement_Date"
+            style="@style/CustomMaterialButton"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:text="@string/premere_qui"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"/>
+
+        <!--Riga 3 Prezzo -->
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/orario"
+            style="@style/SubtitleText"
+            android:layout_column="0"
+            android:layout_row="2"/>
+
+        <EditText
+            android:id="@+id/EditText_Doctor_Dialog_AddMeasurement_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            android:hint="@string/_00_00"
+            android:inputType="datetime"
+            android:textAlignment="viewStart"
+            android:textColorHint="#CCC"
+            android:importantForAutofill="no" />
+
+        <!--Riga 4 Data -->
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/valore"
+            style="@style/SubtitleText"
+            android:layout_column="0"
+            android:layout_row="3"/>
+
+        <EditText
+            android:id="@+id/EditText_Doctor_Dialog_AddMeasurement_Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            android:hint="@string/_00_00"
+            android:inputType="datetime"
+            android:textAlignment="viewStart"
+            android:textColorHint="#CCC"
+            android:importantForAutofill="no" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/Button_Doctor_Dialog_AddMeasurement_SaveRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Gridlayout_Doctor_Dialog_AddMeasurement"
+        android:layout_marginHorizontal="10dp"
+        android:text="@string/salva"
+        android:textAllCaps="true"
+        android:background="@drawable/rounded_button"/>
+</RelativeLayout>

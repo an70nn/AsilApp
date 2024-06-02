@@ -4,15 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginTop="10dp"
-    android:minHeight="60dp"
+    android:layout_margin="10dp"
     app:cardElevation="6dp"
     app:cardCornerRadius="25dp">
-    
+
     <LinearLayout
-        android:id="@+id/LinearLayout_Health_LinearLayout_Item"
+        android:id="@+id/LinearLayout_Doctor_ListPatient_Profile_Measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -22,11 +19,11 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/TextView_Health_TextView_Item"
+                android:id="@+id/TextView_Doctor_ListPatient_Profile_Measurement_Name_MedicalParameter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Parametro medico"
+                android:text="@string/parametro_medico"
                 android:textColor="@color/text_black"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -36,28 +33,30 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ImageView_Health_ImageView_Item"
+                android:id="@+id/ImageView_Doctor_ListPatient_Profile_Measurement_Arrow"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/baseline_arrow_drop_down_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/todo"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        
-        <RelativeLayout
-            android:id="@+id/RelativeLayout_Health_ExpandableLayout_Item"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <!-- RecyclerView innestato per informazioni aggiuntive -->
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_Doctor_ListPatient_Profile_Measurement_ExpandableLayout_Item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/RecyclerView_Health_Nested_MedicalParameters"
+                android:id="@+id/RecyclerView_Doctor_ListPatient_Profile_Measurement_Root"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
-        
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

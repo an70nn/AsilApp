@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="@string/misurato_il_giorno"
+            style="@style/SubSubtitleText"/>
+
+        <TextView
+            android:id="@+id/TextView_Health_Nested_TextView_Item_MeasurementDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_00_00_00"
+            style="@style/SubSubtitleText"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="@string/misurato_alle_ore"
+            style="@style/SubSubtitleText"/>
+
+        <TextView
+            android:id="@+id/TextView_Health_Nested_TextView_Item_MeasurementTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_00_00"
+            style="@style/SubSubtitleText"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ultimo_valore_misurato"
+            style="@style/SubSubtitleText"/>
+
+        <TextView
+            android:id="@+id/TextView_Health_Nested_TextView_Item_MeasurementLastValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_00_00"
+            style="@style/SubSubtitleText" />
+    </LinearLayout>
+</LinearLayout>

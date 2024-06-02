@@ -3,48 +3,70 @@ package com.example.asilapp.Models;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Measurement implements Serializable {
+public class Measurement {
+    private String userID;
+    private String date;
+    private String time;
+    private String value;
+    private String category;
 
-    private String tool;
-    private float value;
-    private String user;
-    private Date date;
+    public Measurement(){}
 
-    public Measurement(String tool, float value, String user) {
-        this.tool = tool;
+    public Measurement(String userID, String data, String time, String value, String category) {
+        this.userID = userID;
+        this.date = data;
+        this.time = time;
         this.value = value;
-        this.user = user;
-        this.date = new Date();
-    }
-    public static Date setDateToday(){
-        return new Date();
+        this.category = category;
     }
 
-    public String getTool() {
-        return tool;
-    }
-    public void setTool(String tool) {
-        this.tool = tool;
+    public String getUserID() {
+        return userID;
     }
 
-    public float getValue() {
-        return value;
-    }
-    public void setValue(float value) {
-        this.value = value;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getUser() {
-        return user;
-    }
-    public void setUser(String user) {
-        this.user = user;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
-        this.date = date;
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Measurement{" +
+                "userID='" + userID + '\'' +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
