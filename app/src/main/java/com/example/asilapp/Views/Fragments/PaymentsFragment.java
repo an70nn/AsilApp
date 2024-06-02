@@ -1,100 +1,71 @@
 package com.example.asilapp.Views.Fragments;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.asilapp.Controllers.PaymentsRecords;
+import com.example.asilapp.Controllers.PaymentsReports;
 import com.example.asilapp.R;
-
-import java.util.Calendar;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 public class PaymentsFragment extends Fragment {
+    private TabLayout paymentsTabLayout;
+    private TabItem paymentsRecords, paymentsReports;
+    private ViewPager2 paymentsViewPager;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_payments, container, false);
-
-        EditText etDaData = view.findViewById(R.id.et_da_data);
-        etDaData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(v);
-            }
-        });
-
-        EditText etAData = view.findViewById(R.id.et_a_data);
-        etAData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(v);
-            }
-        });
-
-        Button btnAggiungi = view.findViewById(R.id.btn_aggiungi);
-        btnAggiungi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupDialog();
-            }
-        });
-        return view;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_payments, container, false);
     }
 
-    public void showDatePickerDialog(View view) {
-        EditText editText = (EditText) view;
-        Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        paymentsTabLayout = view.findViewById(R.id.TabLayout_Payments);
+        paymentsRecords   = view.findViewById(R.id.TabItem_Payments_Records);
+        paymentsReports   = view.findViewById(R.id.TabItem_Payments_Reports);
+        paymentsViewPager = view.findViewById(R.id.ViewPager_Payments_Fragments);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                getActivity(),
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        String selectedDate = dayOfMonth + "/" + (month + 1) + "/" + year;
-                        editText.setText(selectedDate);
-                    }
-                }, year, month, day);
-        datePickerDialog.show();
+        // Configura l'adattatore per il ViewPager2
+        paymentsViewPager.setAdapter(new PaymentsPagerAdapter(this));
+        // Imposta i titoli delle schede per i fragment
+        new TabLayoutMediator(paymentsTabLayout, paymentsViewPager,
+                (tab, position) -> tab.setText(position == 0 ? "Payments records" : "Payments report")
+        ).attach();
     }
 
-    public void showPopupDialog() {
-        // Crea il Dialog
-        final Dialog dialog = new Dialog(getContext());
-        dialog.setContentView(R.layout.popup_layout);
+    @Override
+    public void onStart() {
+        super.onStart();
 
-        // Collega gli elementi del layout del popup
-        EditText etTitolo = dialog.findViewById(R.id.et_titolo);
-        EditText etPrezzo = dialog.findViewById(R.id.et_prezzo);
-        EditText etData = dialog.findViewById(R.id.et_data);
-        etData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(v);
+    }
+
+    private static class PaymentsPagerAdapter extends FragmentStateAdapter{
+        public PaymentsPagerAdapter(Fragment fragment) {
+            super(fragment);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            if (position == 0) {
+                return new PaymentsRecords();
+            } else {
+                return new PaymentsReports();
             }
-        });
-        Spinner spinnerCategoria = dialog.findViewById(R.id.spinner_categoria_popup);
-        Button btnSalva = dialog.findViewById(R.id.btn_salva);
+        }
 
-        // Imposta il listener per il pulsante Salva
-        btnSalva.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Salva i dati inseriti dall'utente
-                // ...
-                dialog.dismiss(); // Chiude il popup
-            }
-        });
-
-        dialog.show();
+        @Override
+        public int getItemCount() {
+            return 2;
+        }
     }
 }

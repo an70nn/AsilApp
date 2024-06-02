@@ -41,7 +41,7 @@ public class ResidenceFragment extends Fragment {
      */
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_residence, container, false);
+        return inflater.inflate(R.layout.fragment_residence, container, false);
 
         /*
         // Ricevi gli argomenti
@@ -50,8 +50,6 @@ public class ResidenceFragment extends Fragment {
         // Ora puoi utilizzare centerId come necessario
 
          */
-
-        return view;
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

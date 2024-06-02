@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="country">
-        <item>Seleziona la nazionalità</item>
-        <item>Italia</item>
-        <item>Ucraina</item>
+    <string-array name="countries_array">
+        <item>Morocco</item>
+        <item>Italy</item>
+        <item>Ucraine</item>
+        <item>Tunisi</item>
     </string-array>
 
-    <string-array name="categorie_array">
-        <item>Categoria 1</item>
-        <item>Categoria 2</item>
-        <item>Categoria 3</item>
-        <!-- Aggiungi altre categorie qui -->
+    <string-array name="category">
+        <item>Altro</item>
+        <item>Tutte le categorie</item>
+        <item>Farmaco</item>
+        <item>Igiene</item>
+    </string-array>
+
+    <string-array name="measurement">
+        <item>Temperatura</item>
+        <item>Pressione</item>
+        <item>Battito</item>
     </string-array>
 </resources>

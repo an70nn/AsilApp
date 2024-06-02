@@ -1,6 +1,6 @@
 package com.example.asilapp.Models;
 
-public class Paziente {
+public class Patient {
     private String name;
     private String surname;
     private String gender;
@@ -12,7 +12,7 @@ public class Paziente {
     private String email;
     private String password;
 
-    public Paziente(String name, String surname, String birthPlace, String birthDate, String country, String email, String password, String centerID, String phone, String gender) {
+    public Patient(String name, String surname, String birthPlace, String birthDate, String country, String email, String password, String centerID, String phone, String gender) {
         this.name = name;
         this.surname = surname;
         this.birthPlace = birthPlace;
@@ -26,7 +26,7 @@ public class Paziente {
     }
 
 
-    public Paziente() {
+    public Patient() {
         this.name = "name";
         this.surname = "surname";
         this.birthPlace = "birthPlace";

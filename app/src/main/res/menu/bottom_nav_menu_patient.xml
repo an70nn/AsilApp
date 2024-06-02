@@ -3,20 +3,20 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Home Page" />
+        android:title="@string/pagina_iniziale" />
 
     <item
         android:id="@+id/navigation_health"
         android:icon="@drawable/ic_health"
-        android:title="Salute" />
+        android:title="@string/salute" />
 
     <item
         android:id="@+id/navigation_account"
         android:icon="@drawable/ic_account"
-        android:title="Account" />
+        android:title="@string/profilo" />
 
     <item
         android:id="@+id/navigation_payments"
         android:icon="@drawable/ic_payments"
-        android:title="Spese" />
+        android:title="@string/pagamenti" />
 </menu>

@@ -11,22 +11,22 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.asilapp.R;
-import com.example.asilapp.Models.Paziente;
+import com.example.asilapp.Models.Patient;
 import com.example.asilapp.Database.DatabasePazienti;
 import com.example.asilapp.Database.Listeners.OnPazienteDataReadListener;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.imageview.ShapeableImageView;
 
-public class ProfileFragment extends Fragment{
+import java.util.List;
 
+public class ProfileFragment extends Fragment{
     private ShapeableImageView profileUserPic;
     private MaterialCardView profileEdit, profileLogout, profileDelete;
-    private TextView profileFullname, profileName, profileSurname, profileGender, profileBirthplace, profileBirthdate, profileCountry, profilePhone, profileCentreID, profileEmail, profilePassword;
+    private TextView profileName, profileSurname, profileGender, profileBirthplace, profileBirthdate, profileCountry, profilePhone, profileEmail, profilePassword;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        profileFullname = view.findViewById(R.id.TextView_Profile_Fullname);
         profileName = view.findViewById(R.id.TextView_Profile_Name);
         profileSurname = view.findViewById(R.id.TextView_Profile_Surname);
         profileGender = view.findViewById(R.id.TextView_Profile_Gender);
@@ -34,7 +34,6 @@ public class ProfileFragment extends Fragment{
         profileBirthplace = view.findViewById(R.id.TextView_Profile_Birthplace);
         profileCountry = view.findViewById(R.id.TextView_Profile_Country);
         profilePhone = view.findViewById(R.id.TextView_Profile_Phone);
-        profileCentreID = view.findViewById(R.id.TextView_Profile_CentreID);
         profileEmail = view.findViewById(R.id.TextView_Profile_Email);
         profilePassword = view.findViewById(R.id.TextView_Profile_Password);
 
@@ -48,21 +47,25 @@ public class ProfileFragment extends Fragment{
         DatabasePazienti databasePazienti = new DatabasePazienti(getContext());
         databasePazienti.read(new OnPazienteDataReadListener() {
             @Override
-            public void onPazienteDataRead(Paziente paziente) {
-                if (paziente != null) {
-                    profileName.setText(paziente.getName());
-                    profileSurname.setText(paziente.getSurname());
-                    profileGender.setText(paziente.getGender());
-                    profileBirthdate.setText(paziente.getBirthDate());
-                    profileBirthplace.setText(paziente.getBirthPlace());
-                    profileCountry.setText(paziente.getCountry() );
-                    profilePhone.setText(paziente.getPhone());
-                    profileCentreID.setText(paziente.getCenterID());
-                    profileEmail.setText(paziente.getEmail());
-                    profilePassword.setText(paziente.getPassword());
+            public void onPazienteDataRead(Patient patient) {
+                if (patient != null) {
+                    profileName.setText(patient.getName());
+                    profileSurname.setText(patient.getSurname());
+                    profileGender.setText(patient.getGender());
+                    profileBirthdate.setText(patient.getBirthDate());
+                    profileBirthplace.setText(patient.getBirthPlace());
+                    profileCountry.setText(patient.getCountry() );
+                    profilePhone.setText(patient.getPhone());
+                    profileEmail.setText(patient.getEmail());
+                    profilePassword.setText(patient.getPassword());
                 } else {
                     Toast.makeText(getContext(), "Paziente non trovato", Toast.LENGTH_SHORT).show();
                 }
+            }
+
+            @Override
+            public void onPazienteDataRead(List<Patient> patients) {
+                //Niente
             }
         });
 
