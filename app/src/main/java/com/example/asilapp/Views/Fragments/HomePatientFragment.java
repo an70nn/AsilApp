@@ -11,13 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.asilapp.Controllers.MediaDocuments;
 import com.example.asilapp.R;
 import com.google.android.material.card.MaterialCardView;
 
 public class HomePatientFragment extends Fragment {
 
     private ImageButton patientChangeLanguage;
-    private MaterialCardView patientServiceCenter, patientServiceInfo, patientServiceInterestingSities, patientServiceVideos, patientServiceNumbers, patientServiceDocuments;
+    private MaterialCardView patientServiceCenter, patientServiceInterestingSities, patientServiceNumbers, patientServiceDocuments;
     private FragmentTransaction transaction;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home_patient, container, false);
@@ -25,9 +26,7 @@ public class HomePatientFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         patientServiceCenter            = view.findViewById(R.id.MaterialCardView_Home_Patient_CenterInfo);
-        patientServiceInfo              = view.findViewById(R.id.MaterialCardView_Home_Patient_GeneralInfo);
         patientServiceInterestingSities = view.findViewById(R.id.MaterialCardView_Home_Patient_InterestingSites);
-        patientServiceVideos            = view.findViewById(R.id.MaterialCardView_Home_Patient_Video);
         patientServiceNumbers           = view.findViewById(R.id.MaterialCardView_Home_Patient_SOSNumbers);
         patientServiceDocuments         = view.findViewById(R.id.MaterialCardView_Home_Patient_Documents);
 
@@ -42,29 +41,27 @@ public class HomePatientFragment extends Fragment {
 
 
         patientServiceCenter.setOnClickListener(v -> {
-            ResidenceFragment fragment = new ResidenceFragment();
+            CenterFragment fragment = new CenterFragment();
             transaction.replace(R.id.Fragment_Patient_Container, fragment);
             transaction.commit();
         });
 
-        patientServiceInfo.setOnClickListener(v -> {
-
-        });
 
         patientServiceInterestingSities.setOnClickListener(v -> {
-
+            PlaceInterestFragment fragment = new PlaceInterestFragment();
+            transaction.replace(R.id.Fragment_Patient_Container, fragment);
+            transaction.commit();
         });
 
-        patientServiceVideos.setOnClickListener(v -> {
-
-        });
 
         patientServiceNumbers.setOnClickListener(v -> {
 
         });
 
         patientServiceDocuments.setOnClickListener(v -> {
-
+            MediaFragment fragment = new MediaFragment();
+            transaction.replace(R.id.Fragment_Patient_Container, fragment);
+            transaction.commit();
         });
 
     }

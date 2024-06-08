@@ -80,4 +80,15 @@
     <string name="pazienti">Pazienti</string>
     <string name="salute">Salute</string>
     <string name="profilo">Profilo</string>
+
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
+    <string name="contatti">Contatti</string>
+    <string name="orario_di_apertura">Orario di apertura:</string>
+    <string name="video_illustrativi">Video illustrativi</string>
+    <string name="stile_di_vita">Stile di vita</string>
+    <string name="benessere">Benessere</string>
+    <string name="nutrizione">Nutrizione</string>
+    <string name="pdf_file_name">PDF File Name</string>
+    <string name="healthcare">Healthcare</string>
 </resources>

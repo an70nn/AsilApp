@@ -51,7 +51,8 @@ dependencies {
     //Dipendenze per la gestione dei Fragment
     implementation("androidx.fragment:fragment:1.6.2")
 
-    implementation("com.google.android.gms:play-services-location:18.0.0")
+    //Dipendenza per il servizio di geolocalizzazione di Open Street Maps
+    implementation("org.osmdroid:osmdroid-android:6.1.10")
 
     //Dipendenza per la gestione di versioni API inferiore alla 26
     implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
