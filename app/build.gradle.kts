@@ -43,10 +43,13 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     //Dipendenze per l'accesso al Database Firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-firestore:21.0.0") {
+        exclude(group = "com.google.firebase", module = "firebase-common")
+    }
     implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-storage:21.0.0")
 
     //Dipendenze per la gestione dei Fragment
     implementation("androidx.fragment:fragment:1.6.2")
@@ -56,4 +59,7 @@ dependencies {
 
     //Dipendenza per la gestione di versioni API inferiore alla 26
     implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
+    //Dipendenza per la lettura dei PDF
+    implementation("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
 }
