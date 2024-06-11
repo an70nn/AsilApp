@@ -59,7 +59,4 @@ dependencies {
 
     //Dipendenza per la gestione di versioni API inferiore alla 26
     implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
-
-    //Dipendenza per la lettura dei PDF
-    implementation("com.github.barteksc:android-pdf-viewer:3.2.0-beta.1")
 }

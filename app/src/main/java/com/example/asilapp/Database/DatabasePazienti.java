@@ -101,7 +101,7 @@ public class DatabasePazienti {
             if (task.isSuccessful()) {
                 //Crea un oggetto contenente le informazioni dell'utente da memorizzare poi nel database Firestore
                 Map<String, Object> userData = new HashMap<>();
-                userData.put("id", getCurrentUserId());
+                userData.put("id",         firebaseAuth.getCurrentUser().getUid());
                 userData.put("name",       patient.getName());
                 userData.put("surname",    patient.getSurname());
                 userData.put("gender",     patient.getGender());
@@ -113,7 +113,7 @@ public class DatabasePazienti {
                 userData.put("email",      patient.getEmail());
                 userData.put("password",   patient.getPassword());
 
-                patientsCollection.document(Objects.requireNonNull(getCurrentUserId())).set(userData)
+                patientsCollection.document(firebaseAuth.getCurrentUser().getUid()).set(userData)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -128,7 +128,7 @@ public class DatabasePazienti {
                             if(e.getMessage() != null){
                                 //E mostra anche un feedback specifico sull'errore
                                 errorMessage += e.getMessage();
-                                Log.e(TAG, "Messaggio d'Errore: "+e.getMessage());
+                                Log.e(TAG, "Messaggio d'Errore: "+errorMessage);
                             }
                             Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
                         });
@@ -138,7 +138,7 @@ public class DatabasePazienti {
                 if(task.getException() != null){
                     //E mostra anche un feedback specifico sull'errore
                     errorMessage += task.getException().getMessage();
-                    Log.e(TAG, "Messaggio d'Errore: "+task.getException().getMessage());
+                    Log.e(TAG, "Messaggio d'Errore: "+errorMessage);
                 }
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
             }
@@ -204,6 +204,8 @@ public class DatabasePazienti {
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         //Se esiste lo restituisce
         if(currentUser != null){
+            Log.e(TAG, "L'utente corrente è "+currentUser);
+            Log.e(TAG, "L'ID dell'utente corrente è "+currentUser.getUid());
             return currentUser.getUid();
         }else{
             //Se "non esiste" (quindi null) viene registrato un messaggio di errore

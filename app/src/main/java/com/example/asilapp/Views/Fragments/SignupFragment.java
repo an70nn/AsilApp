@@ -81,7 +81,7 @@ public class SignupFragment extends Fragment{
 
         databasePazienti = new DatabasePazienti(requireContext());
 
-        DatabaseCentroAccoglienza databaseCentroAssistenza = new DatabaseCentroAccoglienza(requireContext());
+        DatabaseCentroAccoglienza databaseCentroAccoglienza = new DatabaseCentroAccoglienza(requireContext());
 
         //Recupero il valore della Data di nascita del paziente
         signupBirthday.setOnClickListener(v -> {
@@ -118,12 +118,12 @@ public class SignupFragment extends Fragment{
 
         //Recupera i valori di Nomi dei centri d'accoglienza per essere visualizzati nello Spinner
         ArrayList<String> listNameCenters = new ArrayList<>();
-        ArrayAdapter adapterCenter = new ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listNameCenters);
+        ArrayAdapter<String> adapterCenter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, listNameCenters);
         adapterCenter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signupCenterID.setAdapter(adapterCenter);
 
         //Carica i dati del centri dal Databae
-        databaseCentroAssistenza.getCentroAccoglienzaAll(centroAccoglienza -> {
+        databaseCentroAccoglienza.getCentroAccoglienzaAll(centroAccoglienza -> {
             if (centroAccoglienza != null) {
                 // Aggiunge il nome del centro accoglienza alla lista delle opzioni
                 listNameCenters.add(centroAccoglienza.getName());
@@ -142,8 +142,7 @@ public class SignupFragment extends Fragment{
 
         //Se premo "Registrati"...
         signupButton.setOnClickListener(v -> {
-            Log.i(TAG, "Valore della data di nascita: "+stringValueBirthday);
-            Log.i(TAG, "Altro Valore: "+signupBirthday);
+
             //Recupera i dati dai campi
             final String RECORD_NAME             = signupName.getText().toString().trim();
             final String RECORD_SURNAME          = signupSurname.getText().toString().trim();
@@ -163,10 +162,12 @@ public class SignupFragment extends Fragment{
                 Toast.makeText(getContext(), "Completa tutti i campi", Toast.LENGTH_SHORT).show();
             } else {
                 //Verifico se tutti i campi sono stati compilati correttamente, e nel caso procedo con la registrazione
-                Patient patient = new Patient(RECORD_NAME, RECORD_SURNAME, RECORD_GENDER, RECORD_BIRTHPLACE, RECORD_BIRTHDAY, RECORD_COUNTRY,
-                                              RECORD_PHONE, RECORD_CENTER, RECORD_EMAIL, RECORD_PASSWORD);
+                Patient patient = new Patient(RECORD_NAME, RECORD_SURNAME, RECORD_BIRTHPLACE, RECORD_BIRTHDAY, RECORD_COUNTRY,
+                                                RECORD_EMAIL, RECORD_PASSWORD, RECORD_CENTER, RECORD_PHONE, RECORD_GENDER);
 
                 databasePazienti.signup(patient);
+
+
             }
         });
 

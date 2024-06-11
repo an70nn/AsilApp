@@ -41,7 +41,7 @@ public class ProfileSpecificPatientFragment extends Fragment {
         specificPatientMeasurement = view.findViewById(R.id.TabItem_Doctor_ProfileSpecificPatient_Measurement);
         specificPatientViewPager   = view.findViewById(R.id.ViewPager_Doctor_ListPatients_Profile);
 
-        //Passaggio dei valori dell'Item del paziente al Profilo specifico del paziente
+        //Passaggio dei valori dell'Item del paziente (dal ListPatientsFragment) al Profilo specifico del paziente
         Bundle args = getArguments();
         if (args != null) {
             String fullName = args.getString("fullName");
@@ -51,7 +51,8 @@ public class ProfileSpecificPatientFragment extends Fragment {
 
             // Passa i dati al fragment ProfileAnagraficFragment
             profileAnagraficArgs = new Bundle();
-            //Anziché fare String name = args.getString("phone"); E poi profileAnagraficArgs.putString("name", name);
+            //Anziché fare String name = args.getString("phone");
+            // E poi profileAnagraficArgs.putString("name", name);
             profileAnagraficArgs.putString("name",       args.getString("name"));
             profileAnagraficArgs.putString("surname",    args.getString("surname"));
             profileAnagraficArgs.putString("gender",     args.getString("gender"));
