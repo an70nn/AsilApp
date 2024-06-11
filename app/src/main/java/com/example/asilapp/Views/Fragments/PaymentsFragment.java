@@ -35,7 +35,7 @@ public class PaymentsFragment extends Fragment {
         paymentsViewPager = view.findViewById(R.id.ViewPager_Payments_Fragments);
 
         // Configura l'adattatore per il ViewPager2
-        paymentsViewPager.setAdapter(new PaymentsPagerAdapter(this));
+        paymentsViewPager.setAdapter(new PaymentsFragment.PaymentsPagerAdapter(this));
         // Imposta i titoli delle schede per i fragment
         new TabLayoutMediator(paymentsTabLayout, paymentsViewPager,
                 (tab, position) -> tab.setText(position == 0 ? "Payments records" : "Payments report")

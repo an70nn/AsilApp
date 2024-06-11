@@ -22,6 +22,7 @@ public class HealthFragment extends Fragment {
     private TabLayout healthTabLayout;
     private TabItem healthParameters, healthReports;
     private ViewPager2 healthViewPager;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_health, container, false);
     }
