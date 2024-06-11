@@ -1,12 +1,12 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.AsilApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/asilPrimary</item>
         <item name="colorOnPrimary">@color/onPrimary</item>
-        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondary">@color/asilSecondary</item>
         <item name="colorOnSecondary">@color/onSecondary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/root</item>
+        <item name="android:statusBarColor">@color/asilRoot</item>
         <!-- Customize your light theme here. -->
 
     </style>
@@ -17,14 +17,14 @@
         <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/root</item>
+        <item name="android:textColor">@color/asilRoot</item>
     </style>
 
     <style name="SubtitleText">
         <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">@color/asilPrimary</item>
     </style>
 
     <style name="SubSubtitleText">
@@ -35,7 +35,7 @@
 
     <style name="CustomRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
         <item name="fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/root</item>
+        <item name="android:textColor">@color/asilRoot</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
@@ -45,7 +45,7 @@
     
     <style name="CustomButton" parent="Widget.MaterialComponents.Button">
         <item name="fontFamily">sans-serif</item>
-        <item name="android:background">@color/primary</item>
+        <item name="android:background">@color/asilPrimary</item>
         <item name="android:textColor">@color/onPrimary</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAllCaps">false</item>
@@ -70,7 +70,7 @@
 
     <style name="CustomMaterialDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="fontFamily">sans-serif</item>
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/asilPrimary</item>
         <item name="colorSurface">@color/background</item>
         <item name="android:background">@color/background</item>
     </style>
@@ -79,7 +79,7 @@
         <item name="fontFamily">sans-serif</item>
         <item name="boxBackgroundMode">outline</item>
         <item name="boxStrokeWidth">2dp</item>
-        <item name="boxStrokeColor">@color/primary</item>
+        <item name="boxStrokeColor">@color/asilPrimary</item>
         <item name="background">@color/background</item>
     </style>
 

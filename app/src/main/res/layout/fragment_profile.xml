@@ -16,7 +16,7 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@color/ui_background">
+            android:background="@color/asilPrimary">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ShapeableImageView_Profile_pic"
