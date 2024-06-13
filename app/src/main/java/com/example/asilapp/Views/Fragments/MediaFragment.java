@@ -12,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.asilapp.Controllers.MediaDocuments;
+import com.example.asilapp.Controllers.MediaVideos;
 import com.example.asilapp.Controllers.PaymentsRecords;
 import com.example.asilapp.Controllers.PaymentsReports;
 import com.example.asilapp.R;
@@ -56,7 +57,7 @@ public class MediaFragment extends Fragment {
         @Override
         public Fragment createFragment(int position) {
             if (position == 0) {
-                return new MediaDocuments();
+                return new MediaVideos();
             } else {
                 return new MediaDocuments();
             }
