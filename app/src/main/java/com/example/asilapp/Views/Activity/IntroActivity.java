@@ -2,6 +2,8 @@ package com.example.asilapp.Views.Activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -11,7 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.asilapp.Database.DatabaseCentroAccoglienza;
 import com.example.asilapp.Models.CentroAccoglienza;
 import com.example.asilapp.R;
-import com.example.asilapp.Views.Fragments.LoginChoseUserFragments;
+import com.example.asilapp.Views.Fragments.*;
 import com.google.firebase.firestore.CollectionReference;
 
 public class IntroActivity extends AppCompatActivity {
@@ -19,6 +21,14 @@ public class IntroActivity extends AppCompatActivity {
     private final String TAG = "IntroActivity";
     private DatabaseCentroAccoglienza databaseCentroAccoglienza;
     private CollectionReference centroAccoglienzaCollection;
+    private int currentFragmentIndex = 0;
+    private Fragment[] fragments = new Fragment[]{
+            new WelcomeFragmentOne(), // Il tuo primo fragment
+            new WelcomeFragmentTwo(), // Il tuo secondo fragment
+            new WelcomeFragmentThree(), // Il tuo terzo fragment
+            new WelcomeFragmentFour(),
+            new LoginChoseUserFragments()  // Ultimo fragment
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,22 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         databaseCentroAccoglienza = new DatabaseCentroAccoglienza(getApplicationContext());
+        loadFragment(fragments[currentFragmentIndex]); // Carica il primo fragment
+
+        Button buttonAvanti = findViewById(R.id.button_avanti);
+        buttonAvanti.setOnClickListener(v -> goToNextFragment());
+    }
+
+    private void goToNextFragment() {
+        if (currentFragmentIndex < fragments.length - 1) {
+            currentFragmentIndex++;
+            replaceFragment(fragments[currentFragmentIndex]);
+        }
+
+        if (currentFragmentIndex == fragments.length - 1) {
+            Button buttonAvanti = findViewById(R.id.button_avanti);
+            buttonAvanti.setVisibility(View.GONE); // Nasconde il bottone
+        }
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -46,7 +72,7 @@ public class IntroActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        loadFragment(new LoginChoseUserFragments());
+        //loadFragment(new LoginChoseUserFragments());
 
         // Recupera il riferimento alla collezione di centri di accoglienza
         centroAccoglienzaCollection = databaseCentroAccoglienza.getCollectionReference();

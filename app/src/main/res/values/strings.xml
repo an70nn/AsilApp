@@ -91,4 +91,15 @@
     <string name="nutrizione">Nutrizione</string>
     <string name="pdf_file_name">PDF File Name</string>
     <string name="healthcare">Healthcare</string>
+    <string name="welcome_description">
+        Ti diamo il benvenuto su AsilApp\n
+        Una comunità in cui nessuno viene escluso
+    </string>
+    <string name="user_description">Su AsilApp avrai a disposizione una serie di servizi
+    tra cui la gestione del profilo personale, una sezione dedicata ai parametri medici registrati
+    nel vostro centro e una sezione dedicata al monitoraggio delle spese
+    </string>
+    <string name="user_description2">Scopri tramite le mappe integrate i luoghi di interesse intorno a te\n
+    In men che non si dica conoscerai perfettamente i tuoi dintorni
+    </string>
 </resources>

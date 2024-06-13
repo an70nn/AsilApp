@@ -39,4 +39,5 @@
     <color name="blue_primary">#2640CF</color>
     <color name="blue_primaryVariant">#3F51B5</color>
     <color name="gray_100">#F5F5F5</color>
+    <color name="white">#FFF</color>
 </resources>
