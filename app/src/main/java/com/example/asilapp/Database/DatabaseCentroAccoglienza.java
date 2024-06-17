@@ -78,12 +78,15 @@ public class DatabaseCentroAccoglienza {
         newCenterData.put("valueRanking",   centroAccoglienza.getValueRanking());
         newCenterData.put("image",          centroAccoglienza.getImage());
         newCenterData.put("city",           centroAccoglienza.getCity());
+        newCenterData.put("province",       centroAccoglienza.getProvince());
+        newCenterData.put("region",         centroAccoglienza.getRegion());
         newCenterData.put("address",        centroAccoglienza.getAddress());
         newCenterData.put("phone",          centroAccoglienza.getPhone());
         newCenterData.put("openingTime",    centroAccoglienza.getOpeningTime());
         newCenterData.put("norma",          centroAccoglienza.getNorma());
         newCenterData.put("rule",           centroAccoglienza.getRule());
         newCenterData.put("description",    centroAccoglienza.getDescription());
+        newCenterData.put("email",          centroAccoglienza.getEmail());
 
         //Aggiunge un nuovo documento senza specificare il suo ID
         collectionReference.add(newCenterData)

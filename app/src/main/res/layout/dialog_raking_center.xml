@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_our_center"
+                android:textColor="@color/asilRoot"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/RatingBar_Patient_MyCenter_RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:rating="0"
+                android:theme="@style/CustomRatingBar"
+                />
+
+            <EditText
+                android:id="@+id/EditText_Patient_MyCenter_RatingComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:hint="@string/enter_your_comment" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/AppCompatButton_Patient_MyCenter_RatingSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send"
+                android:textAllCaps="false"
+                android:textColor="#FFF"
+                android:layout_marginVertical="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/asilSecondary"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

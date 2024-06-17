@@ -29,8 +29,7 @@
             android:layout_height="64dp"
             android:layout_gravity="end"
             android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:contentDescription="@string/todo" />
+            android:layout_marginEnd="25dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

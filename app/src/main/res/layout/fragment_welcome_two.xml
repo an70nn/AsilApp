@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="10dp"
-        android:text="Gestisci il tuo profilo"
+        android:text="@string/title_intro_second_screen"
         android:textColor="@color/asilPrimary"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_description"
+        android:text="@string/description_intro_second_screen"
         android:textAlignment="center"
         android:textSize="22sp" />
 

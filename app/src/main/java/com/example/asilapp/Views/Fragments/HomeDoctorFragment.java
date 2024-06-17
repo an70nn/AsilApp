@@ -37,7 +37,7 @@ public class HomeDoctorFragment extends Fragment {
 
         doctorAddMeasurement.setOnClickListener(v -> {
             //Aggiungere schermata apposita
-            ResidenceFragment fragment = new ResidenceFragment();
+            ListPatientsFragment fragment = new ListPatientsFragment();
             transaction.replace(R.id.Fragment_Doctor_Container, fragment);
             transaction.commit();
         });

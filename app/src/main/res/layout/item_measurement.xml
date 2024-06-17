@@ -14,14 +14,14 @@
         <TextView
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:text="@string/misurato_il_giorno"
+            android:text="@string/measured_on"
             style="@style/SubSubtitleText"/>
 
         <TextView
             android:id="@+id/TextView_Health_Nested_TextView_Item_MeasurementDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00_00"
+            android:text="01/02/2023"
             style="@style/SubSubtitleText"/>
     </LinearLayout>
 
@@ -32,14 +32,14 @@
         <TextView
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:text="@string/misurato_alle_ore"
+            android:text="@string/measured_at"
             style="@style/SubSubtitleText"/>
 
         <TextView
             android:id="@+id/TextView_Health_Nested_TextView_Item_MeasurementTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00"
+            android:text="12:30"
             style="@style/SubSubtitleText"/>
     </LinearLayout>
 
@@ -50,14 +50,14 @@
         <TextView
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:text="@string/ultimo_valore_misurato"
+            android:text="@string/last_measured_value"
             style="@style/SubSubtitleText"/>
 
         <TextView
             android:id="@+id/TextView_Health_Nested_TextView_Item_MeasurementLastValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00"
+            android:text="70/90"
             style="@style/SubSubtitleText" />
     </LinearLayout>
 </LinearLayout>

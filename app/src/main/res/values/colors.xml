@@ -16,19 +16,13 @@
     <color name="asilPrimary">#40E0D0</color>
     <color name="asilSecondary">#20AA99</color>
     <color name="asilRoot">#1F2B5B</color>
-
-
+    <color name="primarty_text">#FFFFFFFF</color>
+    <color name="secondary_text">#20AA99</color>
+    <color name="text_black">#FF000000</color>
     <color name="primary_background">#FFF</color>
     <color name="secondary_background">#55A1D1</color>
     <color name="ui_background">#40E0D0</color>
     <color name="cointainer">#F5F5F5</color>
-    <!--
-    <color name="text_alert">#FF073A</color>
-    <color name="text_success">#28A745</color>
-    -->
-    <color name="primarty_text">#FFFFFFFF</color>
-    <color name="secondary_text">#20AA99</color>
-    <color name="text_black">#FF000000</color>
 
     <!-- Palette di colori di sistema, modificare alla fine-->
     <color name="purple_200">#FFBB86FC</color>

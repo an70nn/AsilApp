@@ -8,15 +8,16 @@
 
     <ImageButton
         android:id="@+id/ImageButton_Home_Doctor_Language"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="@string/cambia_lingua"
+        android:contentDescription="@string/choose_the_language"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_language_32"/>
+        android:background="@drawable/rounded_pic"
+        android:src="@drawable/ic_language_64"/>
 
     <TextView
         android:id="@+id/TextView_Home_Doctor_Services"
@@ -24,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="@string/i_nostri_servizi"
+        android:text="@string/our_services"
+        android:gravity="center_horizontal"
         android:layout_marginStart="10dp"/>
 
     <GridLayout
@@ -62,14 +64,13 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_account"
-                    android:contentDescription="@string/todo" />
+                    android:src="@drawable/ic_account" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/aggiungi_misurazione"
+                    android:text="@string/add_measurement"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:textColor="@color/onSecondary"/>
@@ -99,21 +100,17 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_account"
-                    android:contentDescription="@string/todo" />
+                    android:src="@drawable/ic_account" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/lista_pazienti"
+                    android:text="@string/list_patients"
                     android:textStyle="bold"
                     android:textAlignment="center"
                     android:textColor="@color/onSecondary"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
     </GridLayout>
-
-
 </RelativeLayout>

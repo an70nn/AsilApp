@@ -42,6 +42,7 @@ public class ProfileMeasurement extends Fragment {
     private List<MedicalParameter> medicalParameterList;
     private MedicalParameterAdapter medicalParameterAdapter;
     private DatabasePazienti databasePazienti;
+    private String patientId;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile_measurement, container, false);
@@ -61,13 +62,16 @@ public class ProfileMeasurement extends Fragment {
 
         databasePazienti = new DatabasePazienti(getContext());
 
-        //Test: simulazione del caricamento dei dati
-        //loadMockData();
+        Bundle args = getArguments();
+        if (args != null) {
+            patientId = args.getString("patientId");
+        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        Log.i(TAG, "Il paziente ha ID: "+patientId);
 
         //Aggiornare la lista dei parametri medici con le nuove misurazioni
         databasePazienti.loadMeasurements(databasePazienti.getCurrentUserId(), new OnMeasurementReadListener() {
@@ -109,7 +113,8 @@ public class ProfileMeasurement extends Fragment {
                     String value    = measurementValue.getText().toString().trim();
 
                     if(!date.isEmpty() && !time.isEmpty() && !value.isEmpty()){
-                        String userID = databasePazienti.getCurrentUserId();
+                        String userID = patientId;
+
 
                         Measurement newMeasurement = new Measurement(userID, date, time, value, category);
                         Log.i(TAG, "Record: "+newMeasurement);

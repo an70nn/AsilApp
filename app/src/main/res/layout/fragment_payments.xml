@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Controllers.PaymentsRecords">
+    android:layout_height="match_parent">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/TabLayout_Payments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/LinearLayout_Payments_Records"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal">
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/TabItem_Payments_Records"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pagamenti" />
+        <Spinner
+            android:id="@+id/Spinner_Payments_Records_Category"
+            style="@style/CustomSpinner"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"/>
 
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/TabItem_Payments_Reports"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/report_pagamenti" />
-        </com.google.android.material.tabs.TabLayout>
+        <ImageButton
+            android:id="@+id/ImageButton_Payments_Records_AddExpense"
+            android:src="@drawable/baseline_add_circle_outline_24"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/rounded_pic"/>
+    </LinearLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/ViewPager_Payments_Fragments"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView_Payments_Records"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/LinearLayout_Payments_Records"
+        android:layout_margin="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

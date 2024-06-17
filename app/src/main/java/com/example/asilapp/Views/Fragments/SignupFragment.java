@@ -162,8 +162,8 @@ public class SignupFragment extends Fragment{
                 Toast.makeText(getContext(), "Completa tutti i campi", Toast.LENGTH_SHORT).show();
             } else {
                 //Verifico se tutti i campi sono stati compilati correttamente, e nel caso procedo con la registrazione
-                Patient patient = new Patient(RECORD_NAME, RECORD_SURNAME, RECORD_BIRTHPLACE, RECORD_BIRTHDAY, RECORD_COUNTRY,
-                                                RECORD_EMAIL, RECORD_PASSWORD, RECORD_CENTER, RECORD_PHONE, RECORD_GENDER);
+
+                Patient patient = new Patient(null, RECORD_NAME, RECORD_SURNAME, RECORD_GENDER, RECORD_BIRTHPLACE, RECORD_BIRTHDAY, RECORD_COUNTRY, RECORD_PHONE, RECORD_CENTER, RECORD_EMAIL, RECORD_PASSWORD);
 
                 databasePazienti.signup(patient);
 

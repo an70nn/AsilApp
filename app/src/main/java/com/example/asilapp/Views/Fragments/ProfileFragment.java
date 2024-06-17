@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ProfileFragment extends Fragment{
     private ShapeableImageView profileUserPic;
-    private MaterialCardView profileEdit, profileLogout, profileDelete;
+    private MaterialCardView profileLogout, profileDelete;
     private TextView profileName, profileSurname, profileGender, profileBirthplace, profileBirthdate, profileCountry, profilePhone, profileEmail, profilePassword;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_profile, container, false);
@@ -37,7 +37,6 @@ public class ProfileFragment extends Fragment{
         profileEmail = view.findViewById(R.id.TextView_Profile_Email);
         profilePassword = view.findViewById(R.id.TextView_Profile_Password);
 
-        profileEdit = view.findViewById(R.id.MaterialCardView_Profile_Editprofile);
         profileLogout = view.findViewById(R.id.MaterialCardView_Profile_Logout);
         profileDelete = view.findViewById(R.id.MaterialCardView_Profile_Deleteprofile);
 

@@ -33,7 +33,7 @@ public class LoginDefaultUserFragment extends Fragment {
     public void onStart() {
         super.onStart();
         buttonChoseDefaultPatient.setOnClickListener(v ->
-                databasePazienti.logInAs("Patient", "abdul@test.com", "kebab20"));
+                databasePazienti.logInAs("Patient", "defaultpatient@test.com", "patient#1"));
         buttonChoseDefaultDoctor.setOnClickListener(v ->
                 databasePazienti.logInAs("Doctor", "lucamedici@doctor.com", "casadelsole123"));
     }

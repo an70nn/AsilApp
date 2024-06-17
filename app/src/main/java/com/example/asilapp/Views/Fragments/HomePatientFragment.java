@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.asilapp.Controllers.LanguageManager;
 import com.example.asilapp.R;
 import com.google.android.material.card.MaterialCardView;
 
@@ -54,7 +55,9 @@ public class HomePatientFragment extends Fragment {
 
 
         patientServiceNumbers.setOnClickListener(v -> {
-            //Ci pensa il mio collega
+            EmergencyNumbersFragment fragment = new EmergencyNumbersFragment();
+            transaction.replace(R.id.Fragment_Patient_Container, fragment);
+            transaction.commit();
         });
 
         patientServiceDocuments.setOnClickListener(v -> {
@@ -62,5 +65,11 @@ public class HomePatientFragment extends Fragment {
             transaction.replace(R.id.Fragment_Patient_Container, fragment);
             transaction.commit();
         });
+
+        patientChangeLanguage.setOnClickListener(v -> {
+            LanguageManager languageManager = new LanguageManager(getContext());
+            languageManager.show();
+        });
+
     }
 }

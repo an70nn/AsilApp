@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/TabLayout_Patient_Mymedia"
+    <WebView
+        android:id="@+id/webView_video"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/TabItem_Patient_Mymedia_Videos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/video_illustrativi" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/click_to_whatch"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="16dp" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/TabItem_Patient_Mymedia_Documents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Documenti" />
-    </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/ViewPager_Patient_Mymedia"
-        android:layout_below="@+id/TabLayout_Patient_Mymedia"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_videos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</LinearLayout>

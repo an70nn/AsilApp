@@ -6,28 +6,34 @@ public class CentroAccoglienza {
     private String valueRanking;
     private String image;
     private String city;
+    private String province;
+    private String region;
     private String address;
     private String phone;
     private String openingTime;
     private String norma;
     private String rule;
     private String description;
+    private String email;
 
-    public CentroAccoglienza(String id, String name, String valueRanking, String image, String city, String address, String phone, String openingTime, String norma, String rule, String description) {
+    public CentroAccoglienza(){}
+
+    public CentroAccoglienza(String id, String name, String valueRanking, String image, String city, String province, String region, String address, String phone, String openingTime, String norma, String rule, String description, String email) {
         this.id = id;
         this.name = name;
         this.valueRanking = valueRanking;
         this.image = image;
         this.city = city;
+        this.province = province;
+        this.region = region;
         this.address = address;
         this.phone = phone;
         this.openingTime = openingTime;
         this.norma = norma;
         this.rule = rule;
         this.description = description;
+        this.email = email;
     }
-
-    public CentroAccoglienza(){}
 
     public String getId() {
         return id;
@@ -67,6 +73,22 @@ public class CentroAccoglienza {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getAddress() {
@@ -117,20 +139,31 @@ public class CentroAccoglienza {
         this.description = description;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "Center{" +
+        return "CentroAccoglienza{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", valueRanking='" + valueRanking + '\'' +
                 ", image='" + image + '\'' +
                 ", city='" + city + '\'' +
+                ", province='" + province + '\'' +
+                ", region='" + region + '\'' +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", openingTime='" + openingTime + '\'' +
                 ", norma='" + norma + '\'' +
                 ", rule='" + rule + '\'' +
                 ", description='" + description + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

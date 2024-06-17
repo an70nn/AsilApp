@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="10dp"
-        android:text="Esplora i dintorni\n
-        e trova luoghi di interesse intorno a te"
+        android:text="@string/title_intro_third_screen"
         android:textColor="@color/asilPrimary"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -33,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user_description2"
+        android:text="@string/description_intro_third_screen"
         android:textAlignment="center"
         android:textSize="22sp" />
 

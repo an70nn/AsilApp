@@ -28,8 +28,7 @@
                 android:layout_height="48dp"
                 android:src="@drawable/ic_gohome_64"
                 android:scaleType="center"
-                android:background="@drawable/rounded_pic"
-                android:contentDescription="@string/todo" />
+                android:background="@drawable/rounded_pic" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -45,7 +44,7 @@
                     android:layout_height="wrap_content"
                     style="@style/SubtitleText"
                     android:textColor="@color/onPrimary"
-                    android:text="@string/buon_giorno"/>
+                    android:text=""/>
             </LinearLayout>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>

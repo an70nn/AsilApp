@@ -1,71 +1,76 @@
 package com.example.asilapp.Views.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.asilapp.Controllers.HealthRecords;
-import com.example.asilapp.Controllers.HealthReports;
+import com.example.asilapp.Database.DatabasePazienti;
+import com.example.asilapp.Database.Listeners.OnMeasurementReadListener;
+import com.example.asilapp.Models.Measurement;
+import com.example.asilapp.Views.Adapters.MeasurementAdapter;
 import com.example.asilapp.R;
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HealthFragment extends Fragment {
-    private TabLayout healthTabLayout;
-    private TabItem healthParameters, healthReports;
-    private ViewPager2 healthViewPager;
+    private static final String TAG = "HealthFragment";
+
+    private RecyclerView recyclerView;
+    private MeasurementAdapter measurementAdapter;
+    private List<Measurement> measurementList;
+    private DatabasePazienti databasePazienti;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_health, container, false);
     }
 
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        healthTabLayout  = view.findViewById(R.id.TabLayout_Health);
-        healthParameters = view.findViewById(R.id.TabItem_Health_Medical_Parameters);
-        healthReports    = view.findViewById(R.id.TabItem_Health_Medical_Reports);
-        healthViewPager  = view.findViewById(R.id.ViewPager_Health_Fragments);
-
-        // Configura l'adattatore per il ViewPager2
-        healthViewPager.setAdapter(new HealthFragment.HealthPagerAdapter(this));
-        // Imposta i titoli delle schede per i fragment
-        new TabLayoutMediator(healthTabLayout, healthViewPager,
-                (tab, position) -> tab.setText(position == 0 ? "Medical records" : "Medical reports")
-        ).attach();
-    }
-
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        recyclerView = view.findViewById(R.id.RecyclerView_Patient_Health);
+
+        // Inizializzazione del RecyclerView e del suo adapter
+        measurementList = new ArrayList<>();
+        measurementAdapter = new MeasurementAdapter(measurementList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(measurementAdapter);
+
+        // Inizializzazione del databasePazienti
+        databasePazienti = new DatabasePazienti(getContext());
+
+        // Carica le misurazioni per l'utente corrente
+        String userID = databasePazienti.getCurrentUserId();
+        loadMeasurements(userID);
     }
 
-    private static class HealthPagerAdapter extends FragmentStateAdapter {
-        public HealthPagerAdapter(Fragment fragment) {
-            super(fragment);
-        }
-
-        @NonNull
-        @Override
-        public Fragment createFragment(int position) {
-            if (position == 0) {
-                return new HealthRecords();
-            } else {
-                return new HealthReports();
+    /**
+     * Carica le misurazioni dell'utente corrente.
+     *
+     * @param userID ID dell'utente di cui caricare le misurazioni
+     */
+    private void loadMeasurements(String userID) {
+        databasePazienti.loadMeasurements(userID, new OnMeasurementReadListener() {
+            @Override
+            public void onMeasurementsLoaded(List<Measurement> measurements) {
+                if (measurements != null) {
+                    measurementList.clear();
+                    measurementList.addAll(measurements);
+                    measurementAdapter.notifyDataSetChanged();
+                } else {
+                    Log.e(TAG, "Nessuna misurazione trovata");
+                }
             }
-        }
-
-        @Override
-        public int getItemCount() {
-            return 2;
-        }
+        });
     }
-
 }

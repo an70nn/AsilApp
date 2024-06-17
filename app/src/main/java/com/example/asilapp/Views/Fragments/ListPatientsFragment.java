@@ -5,6 +5,7 @@ import static com.example.asilapp.Views.Adapters.ListPatientsAdapter.calculateAg
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,19 +61,16 @@ public class ListPatientsFragment extends Fragment{
 
                 // Trasmetti i dati del paziente al nuovo fragment
                 Bundle args = new Bundle();
+                args.putString("patientId", patient.getId());
+                Log.i("ListPatientsFragment", patient.getId());
                 args.putString("fullName", patient.getName() + " " + patient.getSurname());
                 args.putString("age", String.valueOf(calculateAge(patient.getBirthDate())) + " anni");
-                args.putString("name", patient.getName());
-                args.putString("surname", patient.getSurname());
-                args.putString("gender", patient.getGender());
                 args.putString("birthPlace", patient.getBirthPlace());
                 args.putString("birthDate", patient.getBirthDate());
                 args.putString("country", patient.getCountry());
                 args.putString("phone", patient.getPhone());
                 args.putString("centerId", patient.getCenterID());
-                args.putString("email", patient.getEmail());
-                args.putString("password", patient.getPassword());
-                // Aggiungi eventuali altri dati necessari
+                args.putString("gender", patient.getGender());
                 profileFragment.setArguments(args);
 
                 // Sostituisci il fragment attuale con il nuovo fragment

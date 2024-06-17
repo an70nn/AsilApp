@@ -12,27 +12,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.fragment.app.FragmentTransaction;
 
-import com.example.asilapp.Controllers.CenterContacts;
-import com.example.asilapp.Controllers.CenterRule;
-import com.example.asilapp.Controllers.PaymentsRecords;
-import com.example.asilapp.Controllers.PaymentsReports;
+import com.example.asilapp.Controllers.RatingCenter;
 import com.example.asilapp.Database.DatabaseCentroAccoglienza;
 import com.example.asilapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class CenterFragment extends Fragment {
     private static final String TAG = "CenterFragment";
-    private TabLayout centerTabLayout;
-    private TabItem centerContacts, centerRule;
-    private ViewPager2 centerViewPager;
     private FloatingActionButton centerRating, centerCall;
-    private TextView centerName, centerDescription;
+    private TextView centerName, centerDescription, centerEmail, centerPhone, centerAddress, centerCity, centerProvince, centerRegion, centerOpeningTime;
     private ImageView centerImage;
     private DatabaseCentroAccoglienza databaseCenter;
 
@@ -41,29 +31,20 @@ public class CenterFragment extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        centerTabLayout   = view.findViewById(R.id.TabLayout_Patient_Mycenter);
-        centerContacts    = view.findViewById(R.id.TabItem_Patient_Mycenter_Contacts);
-        centerRule        = view.findViewById(R.id.TabItem_Patient_Mycenter_Rule);
-        centerViewPager   = view.findViewById(R.id.ViewPager_Patient_Mycenter);
-        centerRating      = view.findViewById(R.id.FloatingActionButton_Patient_Mycenter_Ratingcenter);
-        centerCall        = view.findViewById(R.id.FloatingActionButton_Patient_Mycenter_Callcenter);
-        centerName        = view.findViewById(R.id.TextView_Patient_Mycenter_NameCenter);
-        centerImage       = view.findViewById(R.id.ImageView_Patient_Mycenter_ImageCenter);
+        centerRating = view.findViewById(R.id.FloatingActionButton_Patient_Mycenter_Ratingcenter);
+        centerCall = view.findViewById(R.id.FloatingActionButton_Patient_Mycenter_Callcenter);
+        centerName = view.findViewById(R.id.TextView_Patient_Mycenter_NameCenter);
         centerDescription = view.findViewById(R.id.TextView_Patient_Mycenter_Description);
+        centerEmail = view.findViewById(R.id.TextView_Patient_Mycenter_Email);
+        centerPhone = view.findViewById(R.id.TextView_Patient_Mycenter_Phone);
+        centerAddress = view.findViewById(R.id.TextView_Patient_Mycenter_Address);
+        centerCity = view.findViewById(R.id.TextView_Patient_Mycenter_City);
+        centerProvince = view.findViewById(R.id.TextView_Patient_Mycenter_Province);
+        centerRegion = view.findViewById(R.id.TextView_Patient_Mycenter_Region);
+        centerOpeningTime = view.findViewById(R.id.TextView_Patient_Mycenter_TimeOpening);
+        centerImage = view.findViewById(R.id.ImageView_Patient_Mycenter_ImageCenter);
 
-        databaseCenter    = new DatabaseCentroAccoglienza(getContext());
-/*
-
-PRIMA DI PROCEDERE QUA DEVO SISTEMARE IL SIGNUP-FRAGMENT:
-Quando il paziente si registra per la prima volta, seleziona il nome del Centro d'accoglienza e
-con esso anche l'ID, che vedrò di far passare tramite Bundle dal SignupFragment al CenterFragment.
-Comunque, promemoria:
-Per vedere meglio come funziona, ricordati che:
-
-INIZIA   con ListPatientsFramgent
-CONTINUA con ProfileSpecificPatientFragment
-FINISCE  con ProfileAnagrafic
-
+        databaseCenter = new DatabaseCentroAccoglienza(getContext());
 
         // Leggi i dati del centro accoglienza dal database
         if (getArguments() != null) {
@@ -74,7 +55,14 @@ FINISCE  con ProfileAnagrafic
                     if (centroAccoglienza != null) {
                         centerName.setText(centroAccoglienza.getName());
                         centerDescription.setText(centroAccoglienza.getDescription());
-                        // Qui puoi usare un metodo per ottenere l'immagine dallo storage
+                        centerEmail.setText(centroAccoglienza.getEmail());
+                        centerPhone.setText(centroAccoglienza.getPhone());
+                        centerAddress.setText(centroAccoglienza.getAddress());
+                        centerCity.setText(centroAccoglienza.getCity());
+                        centerProvince.setText(centroAccoglienza.getProvince());
+                        centerRegion.setText(centroAccoglienza.getDescription());
+                        centerOpeningTime.setText(centroAccoglienza.getOpeningTime());
+                        // Qui usare un metodo per ottenere l'immagine dallo storage
                         // Ad esempio: centerImage.setImageBitmap(getImageFromStorage(centroAccoglienza.getImage()));
                     } else {
                         Toast.makeText(getContext(), "Centro d'accoglienza non trovato", Toast.LENGTH_SHORT).show();
@@ -84,42 +72,25 @@ FINISCE  con ProfileAnagrafic
                     Toast.makeText(getContext(), "Errore durante la lettura del centro d'accoglienza", Toast.LENGTH_SHORT).show();
                 });
             }
-        }else{
+        } else {
             Log.i(TAG, "Passaggio dei paramentri non avvenuta");
         }
-*/
 
-        // Configura l'adattatore per il ViewPager2
-        centerViewPager.setAdapter(new CenterPageAdapter(this));
-        // Imposta i titoli delle schede per i fragment
-        new TabLayoutMediator(centerTabLayout, centerViewPager, (tab, position) -> {
-            if(position == 0){
-                tab.setText(getString(R.string.contatti));
-            }else{
-                tab.setText(getString(R.string.regolamento));
+        //Se premuto visualizza il Dialog per l'inserimento della valutazione del centro
+        centerRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRatingCenter();
             }
-        }
-        ).attach();
+        });
     }
 
-    private static class CenterPageAdapter extends FragmentStateAdapter {
-        public CenterPageAdapter(Fragment fragment) {
-            super(fragment);
-        }
-
-        @NonNull
-        @Override
-        public Fragment createFragment(int position) {
-            if (position == 0) {
-                return new CenterContacts();
-            } else {
-                return new CenterRule();
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            return 2;
-        }
+    private void openRatingCenter() {
+        // Replace current fragment with RatingCenter fragment
+        RatingCenter ratingCenterFragment = new RatingCenter();
+        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.Fragment_Patient_Container, ratingCenterFragment);
+        transaction.addToBackStack(null); // Optional: Permette di tornare indietro premendo il pulsante back
+        transaction.commit();
     }
 }

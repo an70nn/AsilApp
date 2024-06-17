@@ -1,6 +1,7 @@
 package com.example.asilapp.Models;
 
 public class Patient {
+    private String id;
     private String name;
     private String surname;
     private String gender;
@@ -12,32 +13,30 @@ public class Patient {
     private String email;
     private String password;
 
-    public Patient(String name, String surname, String birthPlace, String birthDate, String country, String email, String password, String centerID, String phone, String gender) {
+    public Patient() {    }
+
+    public Patient(String id, String name, String surname, String gender, String birthPlace, String birthDate, String country, String phone, String centerID, String email, String password) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
+        this.gender = gender;
         this.birthPlace = birthPlace;
         this.birthDate = birthDate;
         this.country = country;
+        this.phone = phone;
+        this.centerID = centerID;
         this.email = email;
         this.password = password;
-        this.centerID = centerID;
-        this.phone = phone;
-        this.gender = gender;
     }
 
-
-    public Patient() {
-        this.name = "name";
-        this.surname = "surname";
-        this.birthPlace = "birthPlace";
-        this.birthDate = "birthDate";
-        this.country = "country";
-        this.email = "email";
-        this.password = "password";
-        this.centerID = "CenterID";
-        this.phone = "phone";
-        this.gender = "gender";
+    public String getId() {
+        return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -112,15 +111,18 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Patient{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", gender='" + gender + '\'' +
+                ", birthPlace='" + birthPlace + '\'' +
                 ", birthDate='" + birthDate + '\'' +
                 ", country='" + country + '\'' +
+                ", phone='" + phone + '\'' +
+                ", centerID='" + centerID + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", centerID=" + centerID +
                 '}';
     }
 }

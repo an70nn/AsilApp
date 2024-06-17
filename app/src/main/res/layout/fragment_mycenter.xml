@@ -13,7 +13,7 @@
         android:layout_marginTop="10dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/centro_di_accoglienza"/>
+        android:text="@string/reception_centre"/>
 
     <ImageView
         android:id="@+id/ImageView_Patient_Mycenter_ImageCenter"
@@ -39,7 +39,7 @@
             style="@style/SubSubtitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descrizione"
+            android:text="@string/description"
             android:textStyle="bold" />
 
         <ScrollView
@@ -57,33 +57,164 @@
         </ScrollView>
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/TabLayout_Patient_Mycenter"
+    <ScrollView
+        android:id="@+id/ScrollView_Patient_Mycenter_Description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/LinearLayout_Patient_Mycenter_Description">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/TabItem_Patient_Mycenter_Contacts"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/LinearLayout_Patient_Mycenter_Contacts"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/contatti" />
+            android:layout_marginHorizontal="20dp"
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/TabItem_Patient_Mycenter_Rule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/regolamento" />
-    </com.google.android.material.tabs.TabLayout>
+            android:orientation="vertical"
+            android:background="@color/primary_background">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/ViewPager_Patient_Mycenter"
-        android:layout_below="@+id/TabLayout_Patient_Mycenter"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+            <!-- Riga 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"/>
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_Email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email_example"/>
+            </LinearLayout>
+
+            <!-- Riga 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone" />
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_Phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_example"/>
+            </LinearLayout>
+
+            <!-- Riga 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"/>
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_example"/>
+            </LinearLayout>
+
+            <!-- Riga 4 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city"/>
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_City"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city_example"/>
+            </LinearLayout>
+
+            <!-- Riga 5 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/province"/>
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_Province"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/province_example"/>
+            </LinearLayout>
+
+            <!-- Riga 6 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/region"/>
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_Region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/region_example"/>
+            </LinearLayout>
+
+            <!-- Riga 7 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/opening_time"/>
+
+                <TextView
+                    style="@style/SubSubtitleText"
+                    android:id="@+id/TextView_Patient_Mycenter_TimeOpening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/openingtime_example"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/FloatingActionButton_Patient_Mycenter_Callcenter"
@@ -92,11 +223,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="40dp"
-        android:layout_below="@+id/ViewPager_Patient_Mycenter"
+        android:layout_below="@+id/ScrollView_Patient_Mycenter_Description"
         android:src="@android:drawable/stat_sys_phone_call"
         android:clickable="true"
-        android:focusable="true"
-        android:contentDescription="@string/todo" />
+        android:focusable="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/FloatingActionButton_Patient_Mycenter_Ratingcenter"
@@ -106,9 +236,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginStart="40dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/ViewPager_Patient_Mycenter"
+        android:layout_below="@+id/ScrollView_Patient_Mycenter_Description"
         android:src="@drawable/baseline_star_24"
         android:clickable="true"
-        android:focusable="true"
-        android:contentDescription="@string/todo" />
+        android:focusable="true" />
 </RelativeLayout>

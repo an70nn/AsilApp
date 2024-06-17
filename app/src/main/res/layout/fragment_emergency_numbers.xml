@@ -6,30 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/ImageButton_Home_Patient_Language"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="30dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/choose_the_language"
-        android:background="@drawable/rounded_pic"
-        android:src="@drawable/ic_language_64"/>
-
     <TextView
         android:id="@+id/TextView_Home_Patient_Services"
         style="@style/TitleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ImageButton_Home_Patient_Language"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:gravity="center_horizontal"
-        android:text="@string/our_services" />
+        android:text="@string/emergency_numbers" />
 
     <LinearLayout
         android:id="@+id/GridLayout_Home_Patient_Services"
@@ -57,19 +43,19 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:orientation="vertical"
-                    android:paddingVertical="20dp"
+                    android:paddingVertical="10dp"
                     android:background="@color/asilSecondary">
 
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/camp_64"/>
+                        android:src="@drawable/camp_64" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -80,6 +66,20 @@
                         android:layout_marginHorizontal="10dp"
                         android:textAlignment="center"
                         android:textColor="@color/onSecondary"/>
+
+                    <ImageButton
+                        android:id="@+id/ImageButton_Patient_MyCenter_UsefullNumbers_CallCenter"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rounded_relative_layout"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/phone_call_32" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -92,29 +92,43 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:orientation="vertical"
-                    android:paddingVertical="20dp"
+                    android:paddingVertical="10dp"
                     android:background="@color/asilSecondary">
 
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/maps_64" />
+                        android:src="@drawable/ambulancee_64"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/places_of_interest"
+                        android:text="@string/ambulance"
                         android:textStyle="bold"
                         android:layout_marginHorizontal="10dp"
                         android:textAlignment="center"
                         android:textColor="@color/onSecondary"/>
+
+                    <ImageButton
+                        android:id="@+id/ImageButton_Patient_MyCenter_UsefullNumbers_CallAmbulance"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rounded_relative_layout"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/phone_call_32"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
@@ -134,29 +148,43 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:orientation="vertical"
-                    android:paddingVertical="20dp"
+                    android:paddingVertical="10dp"
                     android:background="@color/asilSecondary">
 
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/document_64"/>
+                        android:src="@drawable/police_64" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Document Collection"
+                        android:text="@string/police"
                         android:textStyle="bold"
                         android:layout_marginHorizontal="10dp"
                         android:textAlignment="center"
                         android:textColor="@color/onSecondary"/>
+
+                    <ImageButton
+                        android:id="@+id/ImageButton_Patient_MyCenter_UsefullNumbers_CallPolice"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rounded_relative_layout"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/phone_call_32"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -169,29 +197,43 @@
                 app:cardElevation="8dp">
 
                 <LinearLayout
-                    android:layout_width="140dp"
-                    android:layout_height="140dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:orientation="vertical"
-                    android:paddingVertical="20dp"
+                    android:paddingVertical="10dp"
                     android:background="@color/asilSecondary">
 
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/call_64" />
+                        android:src="@drawable/fire_64"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="@string/emergency_numbers"
+                        android:text="@string/firefighter"
                         android:textStyle="bold"
                         android:layout_marginHorizontal="10dp"
                         android:textAlignment="center"
                         android:textColor="@color/onSecondary"/>
+
+                    <ImageButton
+                        android:id="@+id/ImageButton_Patient_MyCenter_UsefullNumbers_CallFirefighter"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="7dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/rounded_relative_layout"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:padding="10dp"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/phone_call_32"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>

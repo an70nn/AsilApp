@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingEnd="10dp"
-        android:text="La nostra comunità è pronta ad accoglierti"
+        android:text="@string/fourth_intro_third_screen"
         android:textColor="@color/asilPrimary"
         android:textAlignment="center"
         android:textSize="30sp"

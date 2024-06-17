@@ -15,8 +15,7 @@
         android:layout_height="48dp"
         android:src="@drawable/ic_account"
         android:scaleType="center"
-        android:background="@drawable/rounded_pic"
-        android:contentDescription="@string/todo"/>
+        android:background="@drawable/rounded_pic"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:minWidth="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/nome"/>
+                android:text="@string/name"/>
 
             <TextView
                 android:id="@+id/TextView_Doctor_ListPatient_Item_Surname"
@@ -46,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:minWidth="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/cognome"/>
+                android:text="@string/surname"/>
     </LinearLayout>
 
         <LinearLayout
@@ -64,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:minWidth="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/genere"/>
+                android:text="@string/gender"/>
 
             <TextView
                 android:id="@+id/TextView_Doctor_ListPatient_Item_Age"
@@ -72,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:minWidth="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/et"/>
+                android:text="@string/age"/>
 
             <TextView
                 android:id="@+id/TextView_Doctor_ListPatient_Item_Country"
@@ -80,7 +79,7 @@
                 android:layout_width="wrap_content"
                 android:minWidth="100dp"
                 android:layout_height="wrap_content"
-                android:text="@string/paese"/>
+                android:text="@string/country"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

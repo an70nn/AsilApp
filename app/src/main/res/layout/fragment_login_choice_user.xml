@@ -3,63 +3,57 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/asilRoot">
+    android:padding="20dp"
+    android:layout_centerVertical="true"
+    android:background="@drawable/rounded_relative_layout">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/TextView_Default_Info_User"
+        style="@style/SubtitleText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_relative_layout"
-        android:layout_centerInParent="true"
-        android:padding="20dp">
+        android:text="@string/who_are_you"
+        android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:id="@+id/TextView_Default_Info_User"
-            style="@style/SubtitleText"
+    <RadioGroup
+        android:id="@+id/RadioGroup_Login_Choice_User"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/TextView_Default_Info_User"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/RadioButton_Login_Button_Patient"
+            style="@style/CustomRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chi_sei"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:drawableTop="@drawable/patient_login_icon"
+            android:text="@string/patient"/>
 
-        <RadioGroup
-            android:id="@+id/RadioGroup_Login_Choice_User"
+        <RadioButton
+            android:id="@+id/RadioButton_Login_Button_Doctor"
+            style="@style/CustomRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/TextView_Default_Info_User"
-            android:orientation="horizontal">
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:drawableTop="@drawable/doctor_login_icon"
+            android:text="@string/doctor"/>
+    </RadioGroup>
 
-            <RadioButton
-                android:id="@+id/RadioButton_Login_Button_Patient"
-                style="@style/CustomRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="10dp"
-                android:drawableTop="@drawable/patient_login_icon"
-                android:text="@string/paziente"/>
-
-            <RadioButton
-                android:id="@+id/RadioButton_Login_Button_Doctor"
-                style="@style/CustomRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
-                android:drawableTop="@drawable/doctor_login_icon"
-                android:text="@string/dottore"/>
-        </RadioGroup>
-
-        <TextView
-            android:id="@+id/TextView_Default_LogInAs_Default"
-            style="@style/SubSubtitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/RadioGroup_Login_Choice_User"
-            android:layout_centerHorizontal="true"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:text="@string/clicca_qui_se_vuoi_accedere_ncome_utente_predefinito"/>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/TextView_Default_LogInAs_Default"
+        style="@style/SubSubtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/RadioGroup_Login_Choice_User"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:text="@string/click_here_if_you_want_to_log_in_as_the_default_user"/>
 </RelativeLayout>

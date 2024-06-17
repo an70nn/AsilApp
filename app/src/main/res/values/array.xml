@@ -9,12 +9,12 @@
 
     <string-array name="category">
         <item>Altro</item>
-        <item>Tutte le categorie</item>
         <item>Farmaco</item>
         <item>Igiene</item>
     </string-array>
 
     <string-array name="measurement">
+        <item>Tutte le categorie</item>
         <item>Temperatura</item>
         <item>Pressione</item>
         <item>Battito</item>

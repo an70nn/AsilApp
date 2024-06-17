@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     style="@style/SubtitleText"
                     android:textColor="@color/onPrimary"
-                    android:text="Buon giorno!"/>
+                    android:text=""/>
             </LinearLayout>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>

@@ -28,6 +28,13 @@ public class MedicalParameterAdapter extends RecyclerView.Adapter<MedicalParamet
         this.medicalParameterList = medicalParameterList;
     }
 
+    public void updateList(List<MedicalParameter> newList) {
+        medicalParameterList.clear();
+        medicalParameterList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
+
     @NonNull
     @Override
     public MedicalParameterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
