@@ -21,7 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CenterFragment extends Fragment {
     private static final String TAG = "CenterFragment";
-    private FloatingActionButton centerRating, centerCall;
+    private FloatingActionButton centerRating;
     private TextView centerName, centerDescription, centerEmail, centerPhone, centerAddress, centerCity, centerProvince, centerRegion, centerOpeningTime;
     private ImageView centerImage;
     private DatabaseCentroAccoglienza databaseCenter;
@@ -32,7 +32,6 @@ public class CenterFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         centerRating = view.findViewById(R.id.FloatingActionButton_Patient_Mycenter_Ratingcenter);
-        centerCall = view.findViewById(R.id.FloatingActionButton_Patient_Mycenter_Callcenter);
         centerName = view.findViewById(R.id.TextView_Patient_Mycenter_NameCenter);
         centerDescription = view.findViewById(R.id.TextView_Patient_Mycenter_Description);
         centerEmail = view.findViewById(R.id.TextView_Patient_Mycenter_Email);
@@ -49,6 +48,7 @@ public class CenterFragment extends Fragment {
         // Leggi i dati del centro accoglienza dal database
         if (getArguments() != null) {
             String centerId = getArguments().getString("centerId");
+            Log.i(TAG, "CenterID="+centerId);
             if (centerId != null) {
                 databaseCenter.readCenterById(centerId).addOnSuccessListener(centroAccoglienza -> {
                     // Aggiorna le viste con i dati del centro accoglienza

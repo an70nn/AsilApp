@@ -1,6 +1,7 @@
 package com.example.asilapp.Views.Fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.asilapp.Controllers.LanguageManager;
 import com.example.asilapp.R;
+import com.example.asilapp.Views.Activity.HomepagePatientActivity;
 import com.google.android.material.card.MaterialCardView;
 
 public class HomePatientFragment extends Fragment {
@@ -20,6 +22,8 @@ public class HomePatientFragment extends Fragment {
     private ImageButton patientChangeLanguage;
     private MaterialCardView patientServiceCenter, patientServiceInterestingSities, patientServiceNumbers, patientServiceDocuments;
     private FragmentTransaction transaction;
+    private String centerId;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home_patient, container, false);
     }
@@ -29,8 +33,11 @@ public class HomePatientFragment extends Fragment {
         patientServiceInterestingSities = view.findViewById(R.id.MaterialCardView_Home_Patient_InterestingSites);
         patientServiceNumbers           = view.findViewById(R.id.MaterialCardView_Home_Patient_SOSNumbers);
         patientServiceDocuments         = view.findViewById(R.id.MaterialCardView_Home_Patient_Documents);
-
         patientChangeLanguage           = view.findViewById(R.id.ImageButton_Home_Patient_Language);
+
+        HomepagePatientActivity homepagePatientActivity = (HomepagePatientActivity) getActivity();
+        centerId = homepagePatientActivity.getCenterId();
+        Log.i("HomePatientFragment", "Qui?"+centerId);
 
         transaction = getActivity().getSupportFragmentManager().beginTransaction();
     }
@@ -42,6 +49,9 @@ public class HomePatientFragment extends Fragment {
 
         patientServiceCenter.setOnClickListener(v -> {
             CenterFragment fragment = new CenterFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("centerId", centerId);
+            fragment.setArguments(bundle);
             transaction.replace(R.id.Fragment_Patient_Container, fragment);
             transaction.commit();
         });

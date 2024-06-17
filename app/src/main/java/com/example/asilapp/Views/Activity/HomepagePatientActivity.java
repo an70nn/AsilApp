@@ -22,6 +22,8 @@ public class HomepagePatientActivity extends AppCompatActivity {
     private Fragment selectedFragment = null;
     private ImageButton homepageGoHomePage;
     private TextView homepageTitlePage;
+    private String centerId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,10 @@ public class HomepagePatientActivity extends AppCompatActivity {
 
         homepageGoHomePage = findViewById(R.id.ImageButton_Patient_Toolbar_GoHomePage);
         homepageTitlePage  = findViewById(R.id.TextView_Patient_Toolbar_NamePage);
+
+        // Ottieni centerId dall'intent
+        centerId = getIntent().getStringExtra("centerId");
+
 
         BottomNavigationView navigation = findViewById(R.id.BottomNavigationView_Patient);
         navigation.setOnItemSelectedListener(item -> {
@@ -85,4 +91,9 @@ public class HomepagePatientActivity extends AppCompatActivity {
     private void setToolbarTitle(String title) {
         homepageTitlePage.setText(title);
     }
+
+    public String getCenterId() {
+        return centerId;
+    }
+
 }

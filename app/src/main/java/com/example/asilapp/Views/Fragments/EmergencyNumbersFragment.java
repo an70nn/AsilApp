@@ -66,7 +66,7 @@ public class EmergencyNumbersFragment extends Fragment {
         return view;
     }
 
-    private void makePhoneCall(String phoneNumber) {
+    public void makePhoneCall(String phoneNumber) {
         if (ContextCompat.checkSelfPermission(requireContext(),
                 Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(),

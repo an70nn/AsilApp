@@ -120,6 +120,7 @@ public class ProfileSpecificPatientFragment extends Fragment {
                 // Aggiorna l'adapter
                 medicalParameterAdapter.notifyDataSetChanged();
             }
+
         });
 
 

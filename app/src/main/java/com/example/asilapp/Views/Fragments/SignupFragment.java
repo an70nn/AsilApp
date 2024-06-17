@@ -56,6 +56,7 @@ public class SignupFragment extends Fragment{
     private ImageButton signupGoBack;
     //Gestione dell'accesso al database
     private DatabasePazienti databasePazienti;
+    private DatabaseCentroAccoglienza databaseCentroAccoglienza;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class SignupFragment extends Fragment{
 
         databasePazienti = new DatabasePazienti(requireContext());
 
-        DatabaseCentroAccoglienza databaseCentroAccoglienza = new DatabaseCentroAccoglienza(requireContext());
+        databaseCentroAccoglienza = new DatabaseCentroAccoglienza(requireContext());
 
         //Recupero il valore della Data di nascita del paziente
         signupBirthday.setOnClickListener(v -> {
@@ -151,23 +152,37 @@ public class SignupFragment extends Fragment{
             final String RECORD_BIRTHDAY         = stringValueBirthday;
             final String RECORD_COUNTRY          = signupCountry.getText().toString().trim();
             final String RECORD_PHONE            = signupPhone.getText().toString().trim();
-            final String RECORD_CENTER           = signupCenterID.getSelectedItem().toString().trim();
+            final String RECORD_CENTER_NAME      = signupCenterID.getSelectedItem().toString().trim();
+
             final String RECORD_EMAIL            = signupEmail.getText().toString().trim();
             final String RECORD_PASSWORD         = signupPassword.getText().toString().trim();
             final String RECORD_PASSWORD_CONFIRM = signupPasswordConfirm.getText().toString().trim();
 
             if (TextUtils.isEmpty(RECORD_NAME)         || TextUtils.isEmpty(RECORD_SURNAME)  || TextUtils.isEmpty(RECORD_GENDER) || TextUtils.isEmpty(RECORD_BIRTHPLACE) ||
-                    TextUtils.isEmpty(RECORD_BIRTHDAY) || TextUtils.isEmpty(RECORD_COUNTRY)  || TextUtils.isEmpty(RECORD_PHONE)  || TextUtils.isEmpty(RECORD_CENTER)     ||
+                    TextUtils.isEmpty(RECORD_BIRTHDAY) || TextUtils.isEmpty(RECORD_COUNTRY)  || TextUtils.isEmpty(RECORD_PHONE)  || TextUtils.isEmpty(RECORD_CENTER_NAME)     ||
                     TextUtils.isEmpty(RECORD_EMAIL)    || TextUtils.isEmpty(RECORD_PASSWORD) || TextUtils.isEmpty(RECORD_PASSWORD_CONFIRM)) {
                 Toast.makeText(getContext(), "Completa tutti i campi", Toast.LENGTH_SHORT).show();
-            } else {
-                //Verifico se tutti i campi sono stati compilati correttamente, e nel caso procedo con la registrazione
+            }else {
+                //Nel caso in cui tutti i campi sono stati compilati correttamente, procedo con la registrazione
+                //Acqusisco l'ID del centro d'accoglienza dal centro selezionato in fase di registrazione
+                //E lo passo al Fragment "CenterFragment.Java"
+                databaseCentroAccoglienza.getCenterIdFromName(RECORD_CENTER_NAME, new DatabaseCentroAccoglienza.OnGetCenterIdListener() {
+                    @Override
+                    public void onCenterIdReceived(String centerId) {
+                        if(centerId != null){
 
-                Patient patient = new Patient(null, RECORD_NAME, RECORD_SURNAME, RECORD_GENDER, RECORD_BIRTHPLACE, RECORD_BIRTHDAY, RECORD_COUNTRY, RECORD_PHONE, RECORD_CENTER, RECORD_EMAIL, RECORD_PASSWORD);
+                            //public Patient(String id, String name, String surname, String gender, String birthPlace, String birthDate, String country, String phone, String centerName, String email, String password) {
+                            Patient patient = new Patient(null, RECORD_NAME, RECORD_SURNAME, RECORD_GENDER, RECORD_BIRTHPLACE, RECORD_BIRTHDAY, RECORD_COUNTRY,
+                                                                    RECORD_PHONE, RECORD_CENTER_NAME, RECORD_EMAIL, RECORD_PASSWORD);
 
-                databasePazienti.signup(patient);
-
-
+                            Log.i(TAG, "Nome centro selezionato: "+RECORD_CENTER_NAME+", ID:"+centerId);
+                            databasePazienti.signup(patient, centerId);
+                        }else {
+                            // Il centro non è stato trovato
+                            Toast.makeText(getContext(), "Centro di accoglienza non trovato", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 

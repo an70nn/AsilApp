@@ -9,13 +9,13 @@ public class Patient {
     private String birthDate;
     private String country;
     private String phone;
-    private String centerID;
+    private String centerName;
     private String email;
     private String password;
 
     public Patient() {    }
 
-    public Patient(String id, String name, String surname, String gender, String birthPlace, String birthDate, String country, String phone, String centerID, String email, String password) {
+    public Patient(String id, String name, String surname, String gender, String birthPlace, String birthDate, String country, String phone, String centerName, String email, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -24,7 +24,7 @@ public class Patient {
         this.birthDate = birthDate;
         this.country = country;
         this.phone = phone;
-        this.centerID = centerID;
+        this.centerName = centerName;
         this.email = email;
         this.password = password;
     }
@@ -80,11 +80,11 @@ public class Patient {
         this.email = email;
     }
 
-    public String getCenterID() {
-        return centerID;
+    public String getCenterName() {
+        return centerName;
     }
-    public void setCenterID(String centerID) {
-        this.centerID = centerID;
+    public void setCenterName(String centerName) {
+        this.centerName = centerName;
     }
 
     public String getPhone() {
@@ -120,7 +120,7 @@ public class Patient {
                 ", birthDate='" + birthDate + '\'' +
                 ", country='" + country + '\'' +
                 ", phone='" + phone + '\'' +
-                ", centerID='" + centerID + '\'' +
+                ", centerName='" + centerName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

@@ -69,7 +69,7 @@ public class ListPatientsFragment extends Fragment{
                 args.putString("birthDate", patient.getBirthDate());
                 args.putString("country", patient.getCountry());
                 args.putString("phone", patient.getPhone());
-                args.putString("centerId", patient.getCenterID());
+                args.putString("centerId", patient.getCenterName());
                 args.putString("gender", patient.getGender());
                 profileFragment.setArguments(args);
 

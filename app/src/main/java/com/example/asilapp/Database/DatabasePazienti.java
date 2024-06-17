@@ -9,9 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.asilapp.Database.Listeners.OnMeasurementReadListener;
+import com.example.asilapp.Database.Listeners.OnMedicalParametersReadListener;
 import com.example.asilapp.Database.Listeners.OnPazienteDataReadListener;
 import com.example.asilapp.Database.Listeners.OnTransactionReadListener;
 import com.example.asilapp.Models.Measurement;
+import com.example.asilapp.Models.MedicalParameter;
 import com.example.asilapp.Models.Transaction;
 import com.example.asilapp.Views.Activity.HomepageDoctorActivity;
 import com.example.asilapp.Views.Activity.HomepagePatientActivity;
@@ -34,7 +36,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class DatabasePazienti {
     private static final String TAG = "DatabasePazienti";
@@ -73,7 +74,33 @@ public class DatabasePazienti {
                             context.startActivity(new Intent(context, HomepageDoctorActivity.class));
                         }
                         else if(TYPE_PATIENT.equals(typeUser)){
-                            context.startActivity(new Intent(context, HomepagePatientActivity.class));
+                            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                            if (currentUser != null) {
+                                String userId = currentUser.getUid();
+                                DocumentReference documentReference = patientsCollection.document(userId);
+                                documentReference.get()
+                                        .addOnSuccessListener(documentSnapshot -> {
+                                            if (documentSnapshot.exists()) {
+                                                // Ottieni l'ID del centro dal documento dell'utente
+                                                String centerId = documentSnapshot.getString("centerId");
+                                                //retrieveCenterData(centerId);
+                                                Intent intent = new Intent(context, HomepagePatientActivity.class);
+                                                intent.putExtra("centerId", centerId);
+                                                Log.i(TAG, "centerId: "+centerId);
+                                                context.startActivity(intent);
+                                            } else {
+                                                Log.e(TAG, "Documento utente non esistente");
+                                                Toast.makeText(context, "Documento utente non esistente", Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Log.e(TAG, "Errore durante la lettura del documento utente", e);
+                                            Toast.makeText(context, "Errore durante la lettura del documento utente", Toast.LENGTH_SHORT).show();
+                                        });
+                            } else {
+                                Log.e(TAG, "Utente corrente null");
+                                Toast.makeText(context, "Utente corrente null", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else{
                             Log.e(TAG, "Tipo di utente non valido: " + typeUser);
@@ -96,7 +123,7 @@ public class DatabasePazienti {
      * Registra un nuovo utente
      * @param patient Oggetto User contenente tutte le informazioni dell'utente da registrare
      */
-    public void signup(final Patient patient) {
+    public void signup(final Patient patient, final String centerId) {
         firebaseAuth.createUserWithEmailAndPassword(patient.getEmail(), patient.getPassword()).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 //Crea un oggetto contenente le informazioni dell'utente da memorizzare poi nel database Firestore
@@ -109,7 +136,8 @@ public class DatabasePazienti {
                 userData.put("birthDate",  patient.getBirthDate());
                 userData.put("country",    patient.getCountry());
                 userData.put("phone",      patient.getPhone());
-                userData.put("centerID",   patient.getCenterID());
+                userData.put("centerName", patient.getCenterName());
+                userData.put("centerId",   centerId);
                 userData.put("email",      patient.getEmail());
                 userData.put("password",   patient.getPassword());
 
@@ -119,7 +147,10 @@ public class DatabasePazienti {
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(context, "Registrazione avvenuta", Toast.LENGTH_SHORT).show();
                                 //Se l'autenticazione è riuscita avvia la schermata homepage
-                                context.startActivity(new Intent(context, HomepagePatientActivity.class));
+                                Intent intent = new Intent(context, HomepagePatientActivity.class);
+                                intent.putExtra("centerId", centerId);
+                                Log.i(TAG, "Passaggio avvenuto? "+centerId);
+                                context.startActivity(intent);
                             }
                         })
                         .addOnFailureListener(e -> {
@@ -304,8 +335,13 @@ public class DatabasePazienti {
     }
 
     //Da controllare
+    /**
+     * Carica le misurazioni per un dato userID.
+     *
+     * @param userID ID dell'utente di cui caricare le misurazioni
+     * @param listener Listener per gestire l'evento di caricamento delle misurazioni
+     */
     public void loadMeasurements(String userID, final OnMeasurementReadListener listener){
-        Log.d(TAG, "loadMeasurements: Loading measurements for user ID: " + userID);
         measurementCollection.whereEqualTo("userID", userID).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -316,19 +352,42 @@ public class DatabasePazienti {
                                 Measurement measurement = document.toObject(Measurement.class);
                                 measurements.add(measurement);
                             }
-                            Log.d(TAG, "loadMeasurements: Measurements loaded successfully");
-                            // Chiamare il metodo di callback con le misurazioni ottenute
                             listener.onMeasurementsLoaded(measurements);
                         } else {
-                            // Se si verifica un errore, notificare l'ascoltatore
+                            Log.e(TAG, "Error getting documents: ", task.getException());
                             listener.onMeasurementsLoaded(null);
-                            Log.e(TAG, "loadMeasurements: Error loading measurements", task.getException());
                         }
                     }
                 });
     }
 
-
+    /**
+     * Carica i parametri medici per un dato userID.
+     *
+     * @param userID ID dell'utente di cui caricare i parametri medici
+     * @param listener Listener per gestire l'evento di caricamento dei parametri medici
+     */
+    public void loadMedicalParameters(String userID, final OnMedicalParametersReadListener listener) {
+        firestoreDatabase.collection("MedicalParameters")
+                .whereEqualTo("userID", userID)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            List<MedicalParameter> medicalParameters = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                MedicalParameter medicalParameter = document.toObject(MedicalParameter.class);
+                                medicalParameters.add(medicalParameter);
+                            }
+                            listener.onMedicalParametersLoaded(medicalParameters);
+                        } else {
+                            Log.e(TAG, "Error getting documents: ", task.getException());
+                            listener.onMedicalParametersLoaded(null);
+                        }
+                    }
+                });
+    }
 
 
 }

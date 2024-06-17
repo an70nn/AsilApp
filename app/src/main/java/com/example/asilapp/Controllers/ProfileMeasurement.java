@@ -85,6 +85,8 @@ public class ProfileMeasurement extends Fragment {
                 // Aggiorna l'adapter
                 medicalParameterAdapter.notifyDataSetChanged();
             }
+
+
         });
 
 

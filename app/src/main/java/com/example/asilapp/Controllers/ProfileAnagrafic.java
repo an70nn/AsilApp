@@ -82,7 +82,7 @@ public class ProfileAnagrafic extends Fragment {
                     anagraficBirthplace.setText(patient.getBirthPlace());
                     anagraficCountry.setText(patient.getCountry() );
                     anagraficPhone.setText(patient.getPhone());
-                    anagraficCenterId.setText(patient.getCenterID());
+                    anagraficCenterId.setText(patient.getCenterName());
                     anagraficEmail.setText(patient.getEmail());
                     anagraficPassword.setText(patient.getPassword());
                 } else {
