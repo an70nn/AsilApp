@@ -59,7 +59,7 @@
     <string name="city_example">Bari</string>
     <string name="province">Province</string>
     <string name="province_example">BA</string>
-    <string name="region">region_example</string>
+    <string name="region">Region</string>
     <string name="region_example">Puglia</string>
     <string name="opening_time">Opening Time</string>
     <string name="openingtime_example">From 09:00 to 20:00</string>

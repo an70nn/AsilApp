@@ -60,10 +60,10 @@ public class CenterFragment extends Fragment {
                         centerAddress.setText(centroAccoglienza.getAddress());
                         centerCity.setText(centroAccoglienza.getCity());
                         centerProvince.setText(centroAccoglienza.getProvince());
-                        centerRegion.setText(centroAccoglienza.getDescription());
+                        centerRegion.setText(centroAccoglienza.getRegion());
                         centerOpeningTime.setText(centroAccoglienza.getOpeningTime());
                         // Qui usare un metodo per ottenere l'immagine dallo storage
-                        // Ad esempio: centerImage.setImageBitmap(getImageFromStorage(centroAccoglienza.getImage()));
+                        // centerImage.setImageBitmap(getImageFromStorage(centroAccoglienza.getImage()));
                     } else {
                         Toast.makeText(getContext(), "Centro d'accoglienza non trovato", Toast.LENGTH_SHORT).show();
                     }

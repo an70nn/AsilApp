@@ -81,32 +81,11 @@
         android:text="@string/log_in"
         android:background="@drawable/rounded_button"/>
 
-    <TextView
-        android:id="@+id/TextView_Login_Or"
-        style="@style/SubSubtitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/Button_Login"
-        android:layout_centerHorizontal="true"
-        android:text="@string/or"/>
-
-    <Button
-        android:id="@+id/Button_Login_QRcode"
-        style="@style/CustomButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_below="@+id/TextView_Login_Or"
-        android:text="@string/log_in_with_qr_code"
-        android:background="@drawable/rounded_button"/>
-
     <LinearLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Button_Login_QRcode"
+        android:layout_below="@+id/Button_Login"
         android:orientation="vertical"
         android:visibility="visible"
         android:gravity="center">
